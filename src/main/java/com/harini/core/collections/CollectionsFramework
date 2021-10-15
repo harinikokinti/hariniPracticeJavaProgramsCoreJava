@@ -1,0 +1,65 @@
+COLLECTION FRAMEWORK
+-------------------
+--The Collection framework represents a unified architecture for storing and manipulating a group of objects.
+It has Interfaces and its implementations, i.e., classes and Algorithm
+Java Collections can achieve all the operations that you perform on a data such as searching, sorting, insertion, manipulation, and deletion.
+
+Java Collection framework provides many interfaces ( List, Queue, Deque, Set) and
+classes (ArrayList, LinkedList, Vector, PriorityQueue, HashSet, LinkedHashSet, TreeSet).
+
+--Hierarchy of Collection Framework  [ capitals are Interfaces, Togglecase is  class ]
+ITERABLE <-- COLLECTION <-- LIST,QUEUE,SET
+LIST <-- ArrayList, LinkedList, Vector, Stack
+QUEUE <-- PriorityQueue
+QUEUE <-- DEQUE <-- ArrayDeque
+SET <--  HashSet,LinkedHashSet
+SET <-- SORTEDSET <-- TreeSet
+
+MAP <-- SORTEDMAP <-- TreeMap
+MAP <-- HasMap <-- LinkedHashMap
+
+--Collection Interface
+The Collection interface is the interface which is implemented by all the classes in the collection framework.
+It is the root interface in the collection hierarchy.
+This interface is basically used to pass around the collections and manipulate them where the maximum generality is desired.
+It declares the methods that every collection will have.
+Methods of Collection interface
+boolean add(E e)
+boolean addAll(Collection<? extends E> c)
+public boolean remove(Object element)
+public boolean removeAll(Collection<?> c)
+default boolean removeIf(Predicate<? super E> filter)
+public boolean retainAll(Collection<?> c)
+public int size()
+public void clear()
+public boolean contains(Object element)
+public boolean containsAll(Collection<?> c)
+public Iterator iterator()
+public Object[] toArray()
+public <T> T[] toArray(T[] a)
+public boolean isEmpty()
+default Stream<E> parallelStream()
+default Stream<E> stream()
+default Spliterator<E> spliterator()
+public boolean equals(Object element)
+public int hashCode()
+
+--Iterator interface
+Iterator interface provides the facility of iterating the elements in a forward direction only.
+Methods of Iterator interface :
+    1   public boolean hasNext()	It returns true if the iterator has more elements otherwise it returns false.
+    2	public Object next()	It returns the element and moves the cursor pointer to the next element.
+    3	public void remove()	It removes the last elements returned by the iterator. It is less used.
+
+-- Iterable Interface
+The Iterable interface is the root interface for all the collection classes.
+The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
+It contains only one abstract method. i.e.,
+Iterator<T> iterator()
+It returns the iterator over the elements of type T.
+
+-- Collections class
+Collection class is used exclusively with static methods that operate on or return collections. It inherits Object class.
+
+Java Collection class supports the polymorphic algorithms that operate on collections.
+Java Collection class throws a NullPointerException if the collections or class objects provided to them are null.

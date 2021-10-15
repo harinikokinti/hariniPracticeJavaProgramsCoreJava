@@ -1,0 +1,195 @@
+EXCEPTIONAL HANDLING
+-- Exception Handling :  Powerful mechanism to handle the runtime errors(ClassNotFoundException, IOException, SQLException, RemoteException, etc.)
+                         to maintain the normal flow of the application.
+   Advantage : to maintain the normal flow of the application
+
+-- Hierarchy of Java Exception classes
+                                        throwable
+                                            |
+                                  ------------------------------------------------
+                              Exception                                         Error
+                              |                                                   |
+                          IOException                                         StackOverflowError
+                          SQLException                                        VirtualMachineError
+                          ClassNotFoundException etc.,                        OutOfMemoryError etc.,
+                          RuntimeException
+                                        |
+                                       ArithmeticException
+                                       NullPointerException
+                                       NumberFormatException
+                                       IndexOutOfBoundsException
+                                                            |
+                                                           ArrayIndexOutOfBoundsException
+                                                           StringIndexOutOfBoundsException etc .,
+
+-- Types of Java Exceptions
+1.Checked Exception (CompiletimeException) : The exceptions checked at compile time.
+                                             The classes that directly inherit the Throwable class except RuntimeException and Error are known as checked exceptions.
+                                             Example: IOException, SQLException, etc.
+2. Unchecked Exception (Runtime Exception) : The exceptions not checked at compile time, but they are checked at runtime.
+                                             Example: ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, etc.
+3. Error : Error is irrecoverable. Some example of errors are OutOfMemoryError, VirtualMachineError, AssertionError etc.
+--------------------------------------------------------------------------
+-- Exception Keywords
+1. try : The try block contain the exception code.
+         The try block must be followed by either catch or finally.
+         It must be used within the method.
+         Note: If an exception occurs at the particular statement in the try block, the rest of the block code will not execute.
+               So, it is recommended not to keep the code in try block that will not throw an exception.
+         Syntax:
+                try
+                {
+                //code that may throw exception
+                } catch(Exception e) {}
+
+                try
+                {
+                //code that may throw exception
+                } finally{}
+
+2. catch : To handle the exception by declaring the type of exception within the parameter.
+           The declared exception must be the parent class exception ( i.e., Exception) or the generated exception type.
+           It must be preceded by try block which means we can't use catch block alone.
+           It can be followed by finally block later.
+           You can use multiple catch block with a single try block.
+
+
+3. finally : To execute the mandatory code.
+            It is executed whether an exception is handled or not.
+4. throw : To throw an exception
+5. throws : To declare exceptions.
+            It specifies that an exception may occur in the method.
+            It doesn't throw an exception.
+            It is always used with method signature.
+--------------------------------------------------------------------------
+-- Exception Scenarios:
+ArithmeticException  :  int a=50/0
+NullPointerException :
+                        String a = "null";
+                        System.out.println(s.length());
+NumberFormatException :
+                        String x;
+                        int i= Integer.parseInt(x);
+ArrayIndexOutOfBoundsException :
+                        int arr[] =  new arr[5];
+                        arr[10] = 300;
+
+--------------------------------------------------------------------------
+-- Internal Working of Java try-catch block
+The JVM firstly checks whether the exception is handled or not.
+If handled, rest of the code is executed.
+If exception is not handled, JVM provides a default exception handler that performs the following tasks:
+    Prints out exception description.
+    Prints the stack trace (Hierarchy of methods where the exception occurred).
+    Causes the program to terminate.
+
+--------------------------------------------------------------------------
+-- Multi Catch Block
+A try block can be followed by one or more catch blocks. Each catch block must contain a different exception handler.
+So, if you have to perform different tasks at the occurrence of different exceptions, use java multi-catch block.
+
+Note:
+1. At a time only one exception occurs and at a time only one catch block is executed.
+2. All catch blocks must be ordered from most specific to most general, i.e. catch for ArithmeticException must come before catch for Exception.
+
+--------------------------------------------------------------------------
+-- Nested Try block :  try block inside a try block
+Sometimes a situation may arise where a part of a block may cause one error and the entire block itself may cause another error.
+In such cases, exception handlers have to be nested.
+
+Note:
+1. When any try block does not have a catch block for a particular exception,
+then the catch block of the outer (parent) try block are checked for that exception, and if it matches, the catch block of outer try block is executed.
+If none of the catch block specified in the code is unable to handle the exception,
+then the Java runtime system will handle the exception. Then it displays the system generated message for that exception.
+2. When the try block within nested try block (inner try block 2) do not handle the exception.
+The control is then transferred to its parent try block (inner try block 1).
+If it does not handle the exception, then the control is transferred to the main try block (outer try block)
+where the appropriate catch block handles the exception. It is termed as nesting.
+
+--------------------------------------------------------------------------
+
+-- finally block: to execute important code such as closing the connection, etc.
+The Finally block is always executed whether an exception is handled or not.
+Therefore, it contains all the necessary statements that need to be printed regardless of the exception occurs or not.
+The finally block follows the try-catch block.
+Note: If you don't handle the exception, before terminating the program, JVM executes finally block (if any).
+
+--Why use Java finally block?
+To put "cleanup" code such as closing a file, closing connection, etc.
+The important statements to be printed can be placed in the finally block.
+
+Note:
+1. For each try block there can be zero or more catch blocks, but only one finally block.
+2. The finally block will not be executed if the program exits (either by calling System.exit() or by causing a fatal error that causes the process to abort).
+
+--------------------------------------------------------------------------
+--throw keyword: to throw an exception explicitly within a method.
+The exception object which is to be thrown must be specified.
+The Exception has some message with it that provides the error description.
+These exceptions may be related to user inputs, server, etc.
+Execution of the current method will stop (the statements after throw won't be executed), and the control will be gone to the caller or the first catch block
+
+Example: throw new exception_class("error message");
+         throw new IOException("sorry device error");
+             Where the Instance must be of type Throwable or subclass of Throwable.
+Note:
+If we throw a checked exception using throw keyword, it is must to handle the exception using catch block or the method must declare it using throws declaration.
+
+--------------------------------------------------------------------------
+-- Exception Propagation
+An exception is first thrown from the top of the stack and if it is not caught,
+it drops down the call stack to the previous method.
+If not caught there, the exception again drops down to the previous method,
+and so on until they are caught or until they reach the very bottom of the call stack. This is called exception propagation.
+
+Note: By default Unchecked Exceptions are forwarded in calling chain (propagated).
+      By default, Checked Exceptions are not forwarded in calling chain (propagated).
+--------------------------------------------------------------------------
+-- throws :
+throws keyword is used to declare an exception which may occur. DEclared at method signature.
+It provides information to the caller of the method about the exception.
+It is better for the programmer to provide the exception handling code so that the normal flow of the program can be maintained.
+Note: 1. Only Checked exceptions are declared.
+         The Unchecked exceptions are under the programmer control, can be corrected.
+         The error are beyond our control.
+      2. If we are calling a method that declares an exception, we must either caught or declare the exception.
+
+-- Advantage of Java throws keyword
+Now Checked Exception can be propagated (forwarded in call stack).
+It provides information to the caller of the method about the exception.
+
+-- Can we rethrow an exception?
+Yes, by throwing same exception in catch block.
+--------------------------------------------------------------------------
+-- Exceptional Handling with Method Overriding:
+Rules :
+1. If the superclass method does not declare an exception, subclass overridden method cannot declare the checked exception but it can declare unchecked exception.
+2. If the superclass method declares an exception, subclass overridden method can declare same, subclass exception or no exception but cannot declare parent exception.
+
+--------------------------------------------------------------------------
+-- Custom or User defined Exceptions
+Creating our own Exception is known as custom exception or user-defined exception.
+Usage:
+ To customize the exception according to the user need.
+ To implement Business logic exceptions, so that it gives god understanding for the application users.
+--------------------------------------------------------------------------
+-- Throwable is a root class for all the Exception classes and the Error classes.
+--Throwable Methods
+    getMessage() : prints the detailed message given in the Throwable class or its sub calsses
+    getSuppressed()
+    getStackTrace()
+    fillInStackTrace()
+    getLocalizedMessage()
+    initCause()
+    getCause()
+    printStackTrace()  : prints the class naem, method,  line number where the exception occurred.
+                        The method printStackTrace prints the stack of methods that have been called when the exception has occured.
+--------------------------------------------------------------------------
+
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+-- Synchronization
+The capability to control the access of multiple threads to any shared resource.
+To allow only one thread to access the shared resource.
+
+Uses
+To prevent thread interference.
+To prevent consistency problem.
+
+Types of Synchronization
+Process Synchronization
+Thread Synchronization
+
+-- Thread Synchronization
+   There are two types of thread synchronization mutual exclusive and inter-thread communication.
+   1. Mutual Exclusive  :  Mutual Exclusive helps keep threads from interfering with one another while sharing data.It can be achieved by using the following three ways
+        Synchronized method.
+        Synchronized block.
+        Static synchronization.
+   2. Cooperation (Inter-thread communication in java)
+
+-- Synchronized Method
+   If you declare any method as synchronized, it is known as synchronized method.
+   Synchronized method is used to lock an object for any shared resource.
+------------------------------------------
+-- Synchronized block
+   It can be used to perform synchronization on any specific resource of the method.
+   Scenario: Suppose we have 50 lines of code in our method, but we want to synchronize only 5 lines, in such cases, we can use synchronized block.
+   If we put all the codes of the method in the synchronized block, it will work same as the synchronized method.
+
+   Points to Remember
+   Synchronized block is used to lock an object for any shared resource.
+   Scope of synchronized block is smaller than the method.
+   A Java synchronized block doesn't allow more than one JVM, to provide access control to a shared resource.
+   The system performance may degrade because of the slower working of synchronized keyword.
+   Java synchronized block is more efficient than Java synchronized method.
+------------------------------------------------
+--Static Synchronization
+    If you make any static method as synchronized, the lock will be on the class not on object.
+
+-- Problem without static synchronization
+Suppose there are two objects of a shared class (e.g. Table) named object1 and object2.
+In case of synchronized method and synchronized block there cannot be interference between t1 and t2 or t3 and t4
+because t1 and t2 both refers to a common object that have a single lock.
+But there can be interference between t1 and t3 or t2 and t4 because t1 acquires another lock and t3 acquires
+another lock. We don't want interference between t1 and t3 or t2 and t4.
+Static synchronization solves this problem.
+-------------------------------------------------
+--Synchronized block on a class lock:
+The block synchronizes on the lock of the object denoted by the reference .class name .class.
+A static synchronized method printTable(int n) in class Table is equivalent to the following declaration:
+
+static void printTable(int n) {
+    synchronized (Table.class) {       // Synchronized block on class A
+        // ...
+    }
+}
+
+-----------------------------------
+-- Deadlock:
+When a thread is waiting for an object lock, that is locked by another thread,  which inturn is waiting for the lock acquired by 1st thread.
+More Complicated Deadlocks
+A deadlock may also include more than two threads
+Thread 1 locks A, waits for B
+Thread 2 locks B, waits for C
+Thread 3 locks C, waits for D
+Thread 4 locks D, waits for A
+Thread 1 waits for thread 2, thread 2 waits for thread 3, thread 3 waits for thread 4, and thread 4 waits for thread 1.
+---------------------------------
+-- Inter-thread communication  or Co-operation  is all about allowing synchronized threads to communicate with each other.
+Cooperation (Inter-thread communication) is a mechanism in which a thread is paused running in its critical section
+and another thread is allowed to enter (or lock) in the same critical section to be executed.
+It is implemented by following methods of Object class:
+    1. wait()   :  It releases the current thread and waits until it gets notified (by invoking notify() or notifyall() methods)
+                    by any other thread in  for the same object
+                    Note: The current thread must own this object's monitor, so it must be called from the synchronized method only otherwise
+                          it will throw exception.
+    2. notify() : It wakes up any of the single thread which is waiting in the same object's monitor. The choice is arbitrary.
+    3. notifyAll() : Wakes up all threads that are waiting on this object's monitor.
+
+-- Why wait(), notify() and notifyAll() methods are defined in Object class not Thread class?
+It is because they are related to lock and object has a lock.
+
+-- Difference between wait and sleep?
+wait()	                                                    sleep()
+The wait() method releases the lock.	                    The sleep() method doesn't release the lock.
+It is a method of Object class	                            It is a method of Thread class
+It is the non-static method	                                It is the static method
+It should be notified by notify() or notifyAll() methods	After the specified amount of time, sleep is completed.
+
+
+---------------------------
+
+--  Interrupting a Thread:
+If any thread is in sleeping or waiting state (i.e. sleep() or wait() is invoked), calling the interrupt() method on the thread,
+ breaks out the sleeping or waiting state throwing InterruptedException
+If the thread is not in the sleeping or waiting state, calling the interrupt() method performs normal behaviour and doesn't interrupt
+the thread but sets the interrupt flag to true.
+
+-- The 3 methods provided by the Thread class for interrupting a thread
+public void interrupt()
+public static boolean interrupted()
+public boolean isInterrupted()
+
+--isInterrupted : The isInterrupted() method returns the interrupted flag either true or false.
+-- The static interrupted() method returns the interrupted flag, then it sets the flag to false if it is true.
+
+-------------------------
+ReEntrant Monitor
+According to Sun Microsystems, Java monitors are reentrant means java thread can reuse the same monitor for
+different synchronized methods if method is called from the method.
+
+
+
+
+
+
+

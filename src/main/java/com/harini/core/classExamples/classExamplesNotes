@@ -1,0 +1,111 @@
+-- A class is a group of objects which have common properties.
+    It is a template or blueprint from which objects are created.
+    It is a logical entity. It can't be physical.
+
+    A class in Java can contain:
+   Fields
+   Methods
+   Constructors
+   Blocks
+   Nested class and interface
+
+
+   Instance variable in Java
+   A variable which is created inside the class but outside the method is known as an instance variable.
+   Instance variable doesn't get memory at compile time. It gets memory at runtime when an object or instance is created.
+   That is why it is known as an instance variable.
+
+
+   new keyword in Java
+   The new keyword is used to allocate memory at runtime. All objects get memory in Heap memory
+
+-----------------------------------------------------
+-- Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+       Ways to achieve Abstraction
+           There are two ways to achieve abstraction in java
+
+           1.Abstract class (0 to 100%)
+           2. Interface (100% )
+
+   An abstract class must be declared with an abstract keyword.
+   It can have abstract and non-abstract methods.
+   It cannot be instantiated.
+   It can have constructors and static methods also and even main() method.
+   It can have final methods which will force the subclass not to change the body of the method.
+----------------------------------------------
+The final keyword in java is used to restrict the user. for security purpose.
+final can be a variable, method, class, parameter.
+
+final variabe:
+-------------
+
+1. If you make any variable as final, you cannot change the value of final variable(It will be constant).
+2. A final variable that is not initialized at the time of declaration is known as blank final variable or uninitialized final variable.
+3. We can initialize blank final variable only in constructor.
+4. A static final variable that is not initialized at the time of declaration is known as static blank final variable.
+   It can be initialized only in static block.
+
+final method:
+-------------
+1. final method cannot be overriden, but can be inherited.
+
+final class:
+------------
+A class declared as final cannot be iherited by any subclass
+
+final parameter:
+---------------
+cannot change the value of the parameter
+
+Constructors cannot be declared as final , because by default, constructors are not inherited (only invoked using super keyword in subclass).
+So no need to declare them as final
+
+
+Example : Wrapper Classes like String,Integer,Float are declared final , no one can override these.
+
+---------------------------------------------------
+INNER CLASS
+
+Java Inner class or Nested class is a class which is declared inside the class or interface.
+
+Advantage of java inner classes:
+--------------------------------
+1) Nested classes represent a special type of relationship that is it can access all the members (data members and methods) of outer class including private.
+2) Nested classes are used to develop more readable and maintainable code because it logically group classes and interfaces in one place only.
+3) Code Optimization: It requires less code to write.
+
+Difference between nested class and inner class in Java:
+----------------------
+Inner class is a part of nested class. Non-static nested classes are known as inner classes.
+
+Types of Nested classes
+---------------------
+1. Non-static nested class (inner class)
+    1. Member inner class
+    2. Anonymous inner class
+    3. Local inner class
+2. Static nested class
+
+MEMBER INNER CLASS
+A non-static class that is created inside a class but outside a method is called member inner class.
+----------
+A static class created inside a class is called sttic nested class.
+It can access only static members of the outer class inclding private.
+Cannot access the non static members of the outer class
+------------
+A class i.e. created inside a method is called local inner class in java.
+If you want to invoke the methods of local inner class, you must instantiate this class inside the method.
+Rules:
+1.  Local variable can't be private, public or protected.
+2.  Local inner class cannot be invoked from outside the method.
+3.  Local inner class cannot access non-final local variable till JDK 1.7.
+    Since JDK 1.8, it is possible to access the non-final local variable in local inner class.
+--------------
+A class that have no name is known as anonymous inner class in java.
+It should be used if you have to override method of class or interface.
+Advantage: Instead of creating a separate child class to override the super class methods, we use anonymous inner class with no class name to override
+
+Java Anonymous inner class can be created by two ways:
+1. Class (may be abstract or concrete).
+2. Interface
+--------------------------------------------------------------------------------------------
