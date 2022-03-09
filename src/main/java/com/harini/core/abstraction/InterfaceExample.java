@@ -32,6 +32,7 @@ the overriding methods must be public in order to avoid the access privilege iss
 What is marker or tagged interface?
 An interface which has no member is known as a marker or tagged interface, for example, Serializable, Cloneable, Remote, etc.
 They are used to provide some essential information to the JVM so that JVM may perform some useful operation.
+Example : Getting permission on a class obj which implements this marker interface and execute a functionality.
 
 //How Serializable interface is written?
 public interface Serializable{
@@ -44,14 +45,16 @@ public interface Serializable{
 interface PrintThis {
     void print();
 }
-class Sample implements PrintThis {
+class PrintThisImpl implements PrintThis {
    public void print() { System.out.println("Hi Print this message");} //  since the methods in interface are public by default,
                                                                      //    the overriding methods must be public in order to avoid the access privilege issue
 }
 public class InterfaceExample {
     public static void main(String args[]) {
-        Sample sample = new Sample();
-        sample.print();
+
+        PrintThis printThis = new PrintThisImpl();
+       // PrintThisImpl printThis = new PrintThisImpl();
+        printThis.print();
     }
 }
 
@@ -79,7 +82,7 @@ class TestInterface1{
     }}
 
 
-// Multiple inheritance in Java by interface 1
+// Multiple inheritance in Java by interface - 1
 interface Printable {
     void print();
 }
@@ -97,7 +100,7 @@ class TestMultipleInheritance {
     }
 }
 
-// Multiple inheritance in Java by interface 2
+// Multiple inheritance in Java by interface - 2
 interface Interface1 {
     void display();
 }

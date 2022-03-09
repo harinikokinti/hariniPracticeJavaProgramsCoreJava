@@ -1,0 +1,19 @@
+REFLECTION API
+ To inspect or modify the classes, interfaces, fields and methods at runtime, without knowing the names of the classes, methods etc
+ It can manipulate private members of the class too.
+ Reflection API is used in frameworks like Spring, Hibernate (where objects are created sung Reflection)
+
+1. Using Reflection, we can create object without using new keyword
+
+Create obejct using Class.newInstance()
+Create obejct using Constructor.newInstance()
+
+2. Using Reflection, the private methods can be invoked
+
+
+difference Between Class.newInstance() and Constructor.newInstance()
+
+Class.newInstance()                                              Constructor.newInstance()
+1. invokes only default constructor                             1. Invokes any type of constructor,
+2. invokes only the defined or visisble constuctor              2. invokes default constructor or no-arg constructor
+3. throws all exceptions thrown by the constructor              3. Wraps all exceptions thrown by the constructor as InvokationTargetException

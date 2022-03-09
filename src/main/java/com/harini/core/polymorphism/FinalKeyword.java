@@ -1,6 +1,7 @@
 package com.harini.core.polymorphism;
 /*
-The final keyword in java is used to restrict the user.Final can be:
+The final keyword in java is used to restrict the user.
+Final can be:
 variable, method, class, parameter
 Final keyword
 1. stop value change
@@ -8,8 +9,8 @@ Final keyword
 3. stop inheritance
 
 --Java final variable
-variable : The uninitialized final variable can be initilised in constructor only. T
-           he blank final variable can be static also which will be initialized in the static block only.
+variable : The uninitialized final variable can be initilised in constructor only.
+           The blank final variable can be static also which will be initialized in the static block only.
 
 -- Java final Method
 If you make any method as final, you cannot override it.
@@ -40,7 +41,7 @@ No, because constructor is never inherited.
 
 // Java final variable
 class TestFinal {
-    final int x; // CT error if not initialised in constructor
+    final int x ; // CT error if not initialised in constructor
     static  int y; // may or may not be initialised with a value. And may or may not be initialised in static block , it can be initilised in constructor also
     static final int z; //CT error if not initialised in static block
 
@@ -68,7 +69,7 @@ public class FinalKeyword {
 
 //Java final method
 class Bike{
-    final void run(){System.out.println("running");}
+    final void run(){System.out.println("Bike is running ");}
 }
 
 class Honda extends Bike{
@@ -81,9 +82,9 @@ class Honda extends Bike{
 }
 
 // Java final class
-//final class Bike{} //  CT error
+final class Bike2{}
 
-class Honda1 extends Bike{
+class Honda1 extends Bike{ //  CT error if given Bike2
    // void run(){System.out.println("running safely with 100kmph");}
 
     public static void main(String args[]){

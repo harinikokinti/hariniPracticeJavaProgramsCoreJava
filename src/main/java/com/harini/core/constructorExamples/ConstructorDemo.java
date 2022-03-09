@@ -54,6 +54,7 @@ class Student {
 
     String name;
     int age;
+    Employee e;
     // no constructor here
 }
 
@@ -62,7 +63,7 @@ public class ConstructorDemo {
     public static void main(String args[]){
         Student student = new Student();
         //We dont have any values for Student name and age but the default cnstructor assigns default values null and 0 respectively.
-       System.out.println("Student Name: " + student.name + "  " + "Student age: " + student.age);
+       System.out.println("Student Name: " + student.name + "  " + "Student age: " + student.age + " " + student.e);
     }
 }
 

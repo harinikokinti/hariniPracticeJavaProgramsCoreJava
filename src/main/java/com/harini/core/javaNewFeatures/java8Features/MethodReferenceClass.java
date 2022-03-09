@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 /*
+Method Reference: Uses function as a parameter to invoke a method.  (call by Method)
 Method reference is used to refer method of functional interface.
 A lambda expression is replaced with the method reference if it is used multiple times(more compact way).
 
@@ -12,7 +13,7 @@ A lambda expression is replaced with the method reference if it is used multiple
 1. Reference to a static method
     Syntax: ContainingClass::staticMethodName
 2. Reference to an instance method
-    Syntax: containingObject::instanceMethodName
+    Syntax: containingClassObject::instanceMethodName
 3. Reference to a constructor -- can refer a constructor by using the new keyword.
     Syntax: ClassName::new
 
@@ -47,6 +48,11 @@ class MethodReferenceInstanceMethod {
         Sample sample = new Sample();
         Sayable1 s2 = sample::message; // Referring non-static method using reference
         s2.say(); // calling interface
+
+
+
+
+
         Sayable1 s3 = new Sample()::message;  // Referring non-static method using anonymous object
         s3.say();
 

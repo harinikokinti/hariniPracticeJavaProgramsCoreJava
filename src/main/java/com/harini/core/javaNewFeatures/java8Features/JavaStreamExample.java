@@ -212,7 +212,7 @@ class StreamsWithMap {
             System.out.println("Say " + s);
         }
 
-        System.out.println("Concat sing Streams ");
+        System.out.println("Concat using Streams ");
         strings.stream().map(p->"Say " + p).forEach(System.out::println);
     }
 
@@ -299,3 +299,67 @@ class UserLocation {
     }
 
 */
+
+
+
+
+//  Practice Examples of Streams  1
+
+class StreamEx {
+
+    static Integer staticNumbers(Integer i) {
+        return i +10;
+    }
+    public static void main(String args[]) {
+        List<String> strings = Arrays.asList("Hari", "Ravi", "chintu","HariKrishna","Thammanah");
+        for (String s : strings) {
+            System.out.println(s);
+        }
+
+        strings.forEach((n)->System.out.println(n));
+
+        System.out.println();
+        strings.stream().map(p->p.toLowerCase()).collect(Collectors.toList()).forEach(System.out::println); // converting to lowecase using map() and iterating
+        strings.stream().filter(p->p.equals(p.toLowerCase())).forEach(System.out::println); // fiktereting only lowecase and iterating
+
+        System.out.println();
+
+        List<Integer> numbers = Arrays.asList(100,200,50,40,60);
+        numbers.stream().filter(p->p>50).forEach(System.out::println); // filterting numbers and iterating
+        System.out.println();
+
+        Integer minValue = numbers.stream().min((p1,p2)->p1>p2?1:-1).get();
+        System.out.println(minValue);
+
+        System.out.println();
+
+        numbers.stream().map(StreamEx::staticNumbers).forEach(System.out::println);  // Method Reference in stream
+
+
+    }
+}
+
+
+//  Practice Examples of Streams  2
+
+
+class StreamExample2 {
+    public static void main(String args[]) {
+        List<String> stringList = Arrays.asList("Ram","Seetha","","Lakshman");
+
+        stringList.stream().filter(p->p.isEmpty());// uding lamda
+
+       Long count =  stringList.stream().filter(String::isEmpty).count(); // using method reference
+       System.out.println(count);
+
+        Long count2 =  stringList.stream().filter(p->p.length()>3).count(); //  count of strings with length more than 3
+        System.out.println(count2);
+
+       String string = stringList.stream().map(p->p.toUpperCase())
+                .collect(Collectors.joining(","));
+        System.out.println(string);
+
+
+
+    }
+}

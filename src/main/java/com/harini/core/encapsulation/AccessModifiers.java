@@ -75,16 +75,16 @@ class Sample2 {
 }
 
 // Access Modifiers with Method Overriding --  gives compile time error
-/*
+
 class A
 {
     protected void msg(){System.out.println("Hello java");}
 }
 class B extends A {
-    void msg(){System.out.println("Hello java");} //  compile time error since the default access specifier is more restrictive then protected
+  // void msg(){System.out.println("Hello java");} //  compile time error since the default access specifier is more restrictive then protected
+    public void msg() {System.out.println("Hello java");}
     public static void main(String args[]){
         B obj=new B();
         obj.msg();
     }
 }
-} */

@@ -73,19 +73,47 @@ e1=e2;//now the first object referred by e1 is available for garbage collection
 3) By anonymous object:
 new Employee();
 
-finalize() method
-The finalize() method is invoked each time before the object is garbage collected. This method can be used to perform cleanup processing. This method is defined in Object class as:
+--Garbage Collection:
+gc() method - invoked by Garbage collector(Daemon thread), found in System and Runtime classes, cleans up the objects which are created using new keyword
+finalize() method - invoked each time before the object is garbage collected, found in Object class, cleans up the objects which are not created using new keyword
 
-protected void finalize(){}
-Note: The Garbage collector of JVM collects only those objects that are created by new keyword. So if you have created any object without new, you can use finalize method to perform cleanup processing (destroying remaining objects).
-gc() method
-The gc() method is used to invoke the garbage collector to perform cleanup processing. The gc() is found in System and Runtime classes.
+The objects can be created without new keyword by following ways
+Using Class.forName() and Class.newInstance()
+ClassLoader loadClass()
+Using Object.clone()
+Deserialization
+Using reflection
 
-public static void gc(){}
-Note: Garbage collection is performed by a daemon thread called Garbage Collector(GC). This thread calls the finalize() method before object is garbage collected.
+
+-- Create object using Class.newInstance()
+Class ref = Class.forName("DemoClass");
+DemoClass obj = (DemoClass) ref.newInstance();
+Class.forName() loads the class in memory. To create an instance of this class, we need to use newInstance().
+
+-- Create object using class loader’s loadClass()
+Just like above method, class loader’s loadClass() method does the same thing. It creates a new instance of class using an existing instance of same class.
+
+instance.getClass().getClassLoader().loadClass("NewClass").newInstance();
+
+--Create object using Object.clone()
+This is also a way to have a new independent instance of a class.
+NewClass obj = new NewClass();
+NewClass obj2 = (NewClass) obj.clone();
+
+-- Create new object using serialization and deserialization
+If you have gone through this article, you can understand that serialization and de-serialization is also a way to have another instance of a class in system.
+
+ObjectInputStream objStream = new ObjectInputStream(inputStream);
+ NewClass obj = (NewClass ) inStream.readObject();
+
+-- Create new object using reflection  [refer reflectionAPI package)
+Reflection is also a popular way to create new instances in most of available frameworks.
+constructor.newInstance(); or
+class.newInstance();
 
 -- Runtime class  : to interact with java runtime environment
-Java Runtime class provides methods to execute a process, invoke GC, get total and free memory etc. There is only one instance of java.lang.Runtime class is available for one java application.
+Java Runtime class provides methods to execute a process, invoke GC, get total and free memory etc.
+There is only one instance of java.lang.Runtime class is available for one java application.
 The Runtime.getRuntime() method returns the singleton instance of Runtime class.
 Methods:
 static Runtime getRuntime()
@@ -216,7 +244,7 @@ class Multitasking2 implements Runnable{
     }
 
     public static void main(String args[]){
-        Thread t1 =new Thread(new Multitasking2());//passing annonymous object of TestMultitasking2 class
+        Thread t1 =new Thread(new Multitasking2());//passing annonymous object of Multitasking2 class
         Thread t2 =new Thread(new Multitasking2());
 
         t1.start();
@@ -321,3 +349,20 @@ class Runtime1{
         Runtime.getRuntime().exec("notepad");//will open a new notepad
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

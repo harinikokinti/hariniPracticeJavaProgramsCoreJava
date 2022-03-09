@@ -35,7 +35,7 @@ class Doggy {
 
 //Example of dynamic binding
 //Here, the object type cannot be determined by the compiler, because the instance of Dog is also an instance of Animal.
-// So compiler doesn't know its type, only its base type.
+// So compiler doesn't know its type, only its base type. The reference variable is linked to the object during runtime and the method call(binding) is decided at runtime
 class AnimalInDB {
     void eating() {
         System.out.println("animal is eating...");

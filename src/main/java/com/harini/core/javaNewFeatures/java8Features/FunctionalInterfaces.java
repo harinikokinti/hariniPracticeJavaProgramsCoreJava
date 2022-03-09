@@ -1,5 +1,6 @@
 package com.harini.core.javaNewFeatures.java8Features;
 /*
+Functional Interface: Single abstract method interface.
 An Interface that contains exactly one abstract method is known as functional interface.
 It can have any number of default, static methods but can contain only one abstract method.
 It can also declare methods of object class.
@@ -335,6 +336,7 @@ class BiFunctionExample {
     }
 
 }
+
 
 
 

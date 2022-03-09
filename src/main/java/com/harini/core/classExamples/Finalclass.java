@@ -21,7 +21,7 @@ final method:
 
 final class:
 ------------
-A class declared as final cannot be iherited by any subclass
+A class declared as final cannot be inherited by any subclass
 
 final parameter:
 ---------------

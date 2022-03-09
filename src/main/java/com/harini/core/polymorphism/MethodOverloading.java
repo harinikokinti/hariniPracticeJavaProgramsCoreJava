@@ -16,7 +16,7 @@ There are two ways to overload the method in java
 3. Can have different return types.Method Overloading is not possible just by changing the return type of the method alone
 4. Have different access modifiers.You can vary the access levels in any direction.
 5. Throw different checked or unchecked exceptions.
-6. You can prevent a method from being overwritten by making it final, but you cannot prevent a method from being overloaded.
+6. You can prevent a method from being overwritten by making it final, or static , but you cannot prevent a method from being overloaded.
 
  */
 
@@ -97,6 +97,17 @@ class TestOverloading4{
  If there is no matching datatype found, one datatype is promoted to another implicitly
 byte-short-int-long-float-double
 char-int-long-float-double
+
+
+byte - 8 bits
+short - 16 bits
+int - 32 bits
+long - 64 bits
+float - 32 bits
+double - 64 bits
+char - 16 bits
+boolean - 1 bit
+
 
 -- Java performs type conversion when you perform an arithmetic operation with unlike data types.
 For example, when you add an int and a  double, the result is a double.

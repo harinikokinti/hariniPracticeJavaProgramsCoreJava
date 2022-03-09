@@ -117,7 +117,10 @@ class mapUsingStream {
         Map<Integer,Employee> mapemployees = new HashMap<>();
         mapemployees.put(1, new Employee(1, "Ravi"));
         mapemployees.put(2, new Employee(2, "Anuskha"));
-     //   mapemployees.entrySet().stream().
+        mapemployees.entrySet().stream().
+                forEach(p-> System.out.println(p.getKey() + " " + p.getValue().empID + " " + p.getValue().empName));
+
+
 
     }
 

@@ -27,7 +27,7 @@ class Box2<T,S> {
 
 public class ParametrizedTypes {
     public static void main(String args[]) {
-        Box2<Integer, List<String>> box2 = new Box2<>();
+        Box2<Integer, List<String>> box2 = new Box2<>(); //  here T = integer and S = LIST<String> are te type arugments  = parameterised type.
 
         List<String> listData = new ArrayList<>();
         listData.add("Ravi");

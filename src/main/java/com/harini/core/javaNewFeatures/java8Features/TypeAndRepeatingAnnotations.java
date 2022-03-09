@@ -71,7 +71,7 @@ class Item {
     String Laptop;
 }
 
-//mRetreiving the Annotation
+//Retreiving the Annotation
 public class TypeAndRepeatingAnnotations {
     public static void main(String[] args) throws NoSuchFieldException,
             SecurityException {

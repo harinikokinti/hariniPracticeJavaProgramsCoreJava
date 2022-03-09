@@ -27,6 +27,8 @@ Note:
  --------------------------------------------------
 Abstract class and interface both are used to achieve abstraction where we can declare the abstract methods.
 Abstract class and interface both can't be instantiated.
+Abstract class is used to specify if there are common functionality in all the sub classes.
+
 
 --DIFFERENCES:
 ABSTRACT CLASS                                                                                  INTERFACE
@@ -42,6 +44,11 @@ multiple Java interfaces.	.
 
 
 Simply, abstract class achieves partial abstraction (0 to 100%) whereas interface achieves fully abstraction (100%).
+-- Major Difference:
+From Java 8, the big difference between the Interface and the Abstract class is
+Using Interfaces, can impleemnt mutiple inheritance whereas Abstract class cannot be used.
+Highest level of Abstraction using Inerface.
+Interfaces are like standards where all its implementation classes are below the hierarchy.
 ---------------------------------------------------
 An interface in Java is a blueprint of a class.
 Interface fields(variables) are public, static and final by default, and the methods are public and abstract.
@@ -85,3 +92,5 @@ Points to remember:
 -- Question
 Can we define a class inside the interface?
 Yes, If we define a class inside the interface, java compiler creates a static nested class.
+
+

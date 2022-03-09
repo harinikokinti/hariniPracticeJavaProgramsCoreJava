@@ -1,6 +1,7 @@
 package com.harini.core.collections;
 /*
 --Comparator interface  (Methods: compare(Object obj1,Object obj2), equals(Object element),  Collections.sort(List list, Comparator c) ) - multiple sorting sequences
+Custom Sorting
 ---------------------------------------------------------------------------------------------------------------------------------------------
 Java Comparator interface is used to order the objects of a user-defined class.
 This interface is found in java.util package and contains 2 methods compare(Object obj1,Object obj2) and equals(Object element).

@@ -9,16 +9,13 @@
    Blocks
    Nested class and interface
 
-
    Instance variable in Java
    A variable which is created inside the class but outside the method is known as an instance variable.
    Instance variable doesn't get memory at compile time. It gets memory at runtime when an object or instance is created.
    That is why it is known as an instance variable.
 
-
    new keyword in Java
    The new keyword is used to allocate memory at runtime. All objects get memory in Heap memory
-
 -----------------------------------------------------
 -- Abstraction is a process of hiding the implementation details and showing only functionality to the user.
        Ways to achieve Abstraction
@@ -89,7 +86,7 @@ Types of Nested classes
 MEMBER INNER CLASS
 A non-static class that is created inside a class but outside a method is called member inner class.
 ----------
-A static class created inside a class is called sttic nested class.
+A static class created inside a class is called static nested class.
 It can access only static members of the outer class inclding private.
 Cannot access the non static members of the outer class
 ------------
@@ -109,3 +106,4 @@ Java Anonymous inner class can be created by two ways:
 1. Class (may be abstract or concrete).
 2. Interface
 --------------------------------------------------------------------------------------------
+

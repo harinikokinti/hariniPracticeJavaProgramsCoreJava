@@ -53,9 +53,8 @@ class Rectange extends Shape
 
 public class RuntimePolymorphism {
         public static void main(String args[]) {
-            Shape s;
-            s = new Rectange();
-            s.draw();
+            Shape  s = new Rectange(); // this linking will be done at run time
+            s.draw();  // which draw method to be called is decided at run time
             System.out.println("The Shape name is: " + s.shapeName); // runtime polymorphism can't be achieved by  data members
             s = new Square(); //  runtime polymorphism is achieved by the overriden methods
             System.out.println("The Shape name is: " + s.shapeName);
@@ -64,5 +63,7 @@ public class RuntimePolymorphism {
             System.out.println("The Shape name is: " + s.shapeName);
            s.draw();
         }
+
+        // here there are multiple draw() methods, and the call is done at runtime , this is dynamic method dispatch or runtime polymorphism
 }
 

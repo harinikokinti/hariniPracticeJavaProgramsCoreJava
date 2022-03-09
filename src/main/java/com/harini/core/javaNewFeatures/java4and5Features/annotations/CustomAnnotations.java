@@ -91,9 +91,12 @@ By default, annotations are not inherited to subclasses. The @Inherited annotati
 4. @Documented
 The @Documented Marks the annotation for inclusion in the documentation.
 
+
+-- Reflection API is a new feature in java used to fethc the features or values of the object
+
  */
 
-// Custom Annotation Creating, applying and Accessing
+// Custom Annotation Creating, applying and Accessing  at METHOD level Example 1
 
 
 import java.lang.annotation.ElementType;
@@ -104,8 +107,10 @@ import java.lang.reflect.*;
 import java.lang.annotation.*;
 
 //Creating annotation
+
+// meta annotation
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target(ElementType.METHOD)   //  creating the annotation at method level
 @interface MyAnnotation {
     int value();
 }
@@ -113,7 +118,7 @@ import java.lang.annotation.*;
 class Sample {
     @MyAnnotation(value = 10)  // accessing annotation
   public    void display() {  // this method must be public
-        System.out.println("Hello annotation");
+        System.out.println("Hello annotation at method");
     }
 }
 
@@ -123,9 +128,42 @@ public class CustomAnnotations
     public static void main(String args[]) throws Exception {
         Sample sample = new Sample();
         sample.display();
-        Method m = sample.getClass().getMethod("display");
+        Class c = sample.getClass(); // using Reflection API feature, fetch the classname
+        Method m = c.getMethod("display");
         MyAnnotation myannotation = m.getAnnotation(MyAnnotation.class);
         System.out.println("Value is: " + myannotation.value());
 
+    }
+}
+
+
+// Custom Annotation Creating, applying and Accessing  at CLASS level Example 2
+// not gt ouptut  ERROR
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)  //  creating the annotation at class level
+@interface MyAnnotation2 {
+    int value();
+}
+
+@MyAnnotation2(value = 100)  // accessing annotation
+class Sample2 {
+    public void display() {  // this method must be public
+        System.out.println("Hello annotation at class ");
+    }
+}
+
+
+ class CustomAnnotations2
+{
+    public static void main(String args[]) throws Exception {
+        Sample2 sample2 = new Sample2();
+        sample2.display();
+        Class c = sample2.getClass(); // using Reflection API feature, fetch the classname
+        Method m = c.getMethod("display");
+        Integer value = m.getAnnotation(MyAnnotation2.class).value();
+       // Annotation annotation = c.getAnnotation(MyAnnotation2.class);
+      // Integer value =    annotation.annotationType().getAnnotation(MyAnnotation2.class).value();
+       System.out.println(value);
     }
 }

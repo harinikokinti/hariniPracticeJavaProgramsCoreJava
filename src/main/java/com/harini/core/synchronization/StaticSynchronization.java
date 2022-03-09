@@ -1,6 +1,6 @@
 package com.harini.core.synchronization;
 /*
---Static Synchronization
+--Static Synchronization  or Class Lock
 If you make any static method as synchronized, the lock will be on the class not on object.
 
 -- Problem without static synchronization
@@ -38,7 +38,7 @@ class Table2{
  class TestSynchronization5 {
     public static void main(String[] args) {
 
-        Thread t1=new Thread(){
+          Thread t1=new Thread(){
             public void run(){
                 Table2.printTable(1);
             }
@@ -96,3 +96,4 @@ class TestStaticSynchronizationAnonymousclass {
         t3.start();
     }
 }
+

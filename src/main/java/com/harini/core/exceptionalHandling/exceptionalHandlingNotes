@@ -172,7 +172,7 @@ Rules :
 Creating our own Exception is known as custom exception or user-defined exception.
 Usage:
  To customize the exception according to the user need.
- To implement Business logic exceptions, so that it gives god understanding for the application users.
+ To implement Business logic exceptions, so that it gives good understanding for the application users.
 --------------------------------------------------------------------------
 -- Throwable is a root class for all the Exception classes and the Error classes.
 --Throwable Methods
@@ -183,7 +183,7 @@ Usage:
     getLocalizedMessage()
     initCause()
     getCause()
-    printStackTrace()  : prints the class naem, method,  line number where the exception occurred.
+    printStackTrace()  : prints the class name, method,  line number where the exception occurred.
                         The method printStackTrace prints the stack of methods that have been called when the exception has occured.
 --------------------------------------------------------------------------
 

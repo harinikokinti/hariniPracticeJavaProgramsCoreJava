@@ -63,3 +63,4 @@ Collection class is used exclusively with static methods that operate on or retu
 
 Java Collection class supports the polymorphic algorithms that operate on collections.
 Java Collection class throws a NullPointerException if the collections or class objects provided to them are null.
+--------------------------------------------

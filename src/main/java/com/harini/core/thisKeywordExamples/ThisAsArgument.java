@@ -19,6 +19,7 @@ class Animal {
 public class ThisAsArgument {
     public static void main(String args[])
     {
+
         Animal animal = new Animal();
     }
 }
@@ -41,6 +42,8 @@ class Class1
     {
         class2Object.printthis();
     }
+
+
 
 }
 
@@ -84,6 +87,7 @@ class B
     {
         A aObject  = new A();
         aObject.method1();
+
         System.out.println(aObject); // here also it should be same.  prints the reference ID
     }
 }

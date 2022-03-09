@@ -7,7 +7,7 @@ It is better for the programmer to provide the exception handling code so that t
 Note: 1. Only Checked exceptions are declared.
          The Unchecked exceptions are under the programmer control, can be corrected.
          The error are beyond our control.
-      2. If we are calling a method that declares an exception, we must either caught or declare the exception.
+      2. If we are calling a method that declares an exception, we must either catch or declare the exception.
 
 -- Advantage of Java throws keyword
 Now Checked Exception can be propagated (forwarded in call stack).
@@ -43,7 +43,7 @@ class throwsExample2 {
 
     static void method() throws IOException {
         System.out.println("Method body");
-       // throw new IOException("device error"); // checked exception
+       throw new IOException("device error"); // checked exception
     }
     public static void main(String args[]) throws IOException{  // here the exception is declared
       method();

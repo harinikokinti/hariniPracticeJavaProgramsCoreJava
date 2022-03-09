@@ -2,6 +2,15 @@ package com.harini.core;
 /*
 There is only call by value in java, not call by reference. If we call a method passing a value, it is known as call by value.
 The changes being done in the called method, is not affected in the calling method.
+
+However from Java The Complete Reference by Herbert Shildt 9th edition:
+"When you pass an object to a method, the situation changes dramatically, because objects are passed by what is effectively call-by-reference.
+Keep in mind that when you create a variable of a class type, you are only creating a reference to an object.
+Thus, when you pass this reference to a method, the parameter that receives it will refer to the same object as that referred to by the argument.
+This effectively means that objects act as if they are passed to methods by use of call-by-reference.
+Changes to the object inside the method do affect the object used as an argument.
+
+Java doesn't pass method arguments by reference; it passes them by value.
  */
 
 // call by value
@@ -65,6 +74,7 @@ class Operation2{
     int data=50;
 
     void change(Operation2 op){
+
         op.data=op.data+100;//changes will be in the instance variable
     }
 

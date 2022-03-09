@@ -33,7 +33,6 @@ public class StaticNestedClassDemo {
     }
 
 
-
     public static void main(String args[]){
             StaticNestedClassDemo.StaticNestedClass obj = new StaticNestedClassDemo.StaticNestedClass();
             obj.add();

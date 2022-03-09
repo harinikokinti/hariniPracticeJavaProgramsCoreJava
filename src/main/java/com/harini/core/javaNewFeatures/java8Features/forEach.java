@@ -3,7 +3,7 @@ package com.harini.core.javaNewFeatures.java8Features;
 import java.util.ArrayList;
 import java.util.List;
 /*
-
+forEach : internal loop
 Java provides a new method forEach() to iterate the elements.
 It is defined in Iterable and Stream interface. It is a default method defined in the Iterable interface.
 Collection classes which extends Iterable interface can use forEach loop to iterate elements.
@@ -27,7 +27,7 @@ public class forEach {
         strings.add("Hi");
         strings.add("welcome");
         strings.add("India");
-        strings.forEach(s -> System.out.println(s)); //  Iterate using Lambda
+        strings.forEach(s -> System.out.println(s)); //  Iterate using Lambda & implements Consumer interface method accept
         strings.forEach(System.out::println); // Iterate using method reference
     }
 

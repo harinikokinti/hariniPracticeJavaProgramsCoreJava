@@ -1,6 +1,6 @@
 package com.harini.core.javaNewFeatures.java8Features;
 /*
-Lambda Expression:
+Lambda Expression:  A function that can be shared or referred to as an object.
 1. To provide the implementation of Functional interface(one abstract method interface).
 2. Less coding.
 
@@ -138,7 +138,7 @@ interface Sayable3{
 //Lambda expression can be used in the collection framework. It provides efficient and concise way to iterate, filter and fetch data
 
 
-class LambdaExpressioncllectios {
+class LambdaExpressioncllections {
     public static void println(Product product) {
         System.out.println(product.id + " " + product.name + " " +  product.price);
     }
@@ -162,12 +162,12 @@ class LambdaExpressioncllectios {
 
         Collections.sort(list, (o1, o2) -> (o1.price > o2.price? 1 : 0));
         System.out.println("Print  the sorted data using Lambda");
-        list.forEach(LambdaExpressioncllectios::println);
+        list.forEach(LambdaExpressioncllections::println);
 
         // filter data using Lambda
         Stream<Product> filtered_data = list.stream().filter(p -> p.price > 5000);
         System.out.println("Get the filtered data");
-        filtered_data.forEach(LambdaExpressioncllectios::println);
+        filtered_data.forEach(LambdaExpressioncllections::println);
 
     }
  }

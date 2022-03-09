@@ -26,6 +26,9 @@ Note:
  whereas you can't do this in interface.
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Understanding the real scenario of Abstract class
 abstract class Shape {
     abstract void draw();
@@ -96,5 +99,7 @@ class TestAbstract {
         a.b();
         a.c();
         a.d();
+
     }
+
 }

@@ -60,7 +60,8 @@ Terminated : dead state when its run() method exits.
     The scheduler then determines which task should execute next, based on priority and other factors.
 
 -- Sleep method : to sleep a thread for the specified amount of time.
-As you know well that at a time only one thread is executed. If you sleep a thread for the specified time,the thread shedular picks up another thread and so on.
+As you know well that at a time only one thread is executed.
+If you sleep a thread for the specified time,the thread shedular picks up another thread and so on.
 
 -- Can we start a thread twice
 No. After starting a thread, it can never be started again. If you does so, an IllegalThreadStateException is thrown.
