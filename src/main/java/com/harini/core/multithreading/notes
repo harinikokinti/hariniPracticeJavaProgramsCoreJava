@@ -17,6 +17,10 @@ Multitasking is a process of executing multiple tasks simultaneously. We use mul
     1) It doesn't block the user because threads are independent and you can perform multiple operations at the same time.
     2) You can perform many operations together, so it saves time.
     3) Threads are independent, so it doesn't affect other threads if an exception occurs in a single thread.
+    4) To utilize the complete CPU(having diff number of core orocessors ex : quad, 6, 8 core )
+    5) To send asynchronic requests (In android phones, )
+    6) In web applications, multithreading is used.
+    7) In Gaming
 
 -- Thread : A thread is a lightweight subprocess, the smallest unit of processing. It is a separate path of execution.
             Only one thread at a time can run in a single process.

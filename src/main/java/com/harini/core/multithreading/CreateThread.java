@@ -20,6 +20,15 @@ package com.harini.core.multithreading;
     The Runnable interface should be implemented by any class whose instances are intended to be executed by a thread.
     Runnable interface have only one method named run().
     public void run(): is used to perform action for a thread.
+
+    Note: The Runnable inerface is used to create Thread in senarios like below
+
+    class A{ }
+    class Mythread extends A, Thread {  // throws error because java doesn't support multiple inheritance
+    }
+
+    Hence this issue can be handled using interface Runnable
+    class Mythread extends A, implements Runnable (its a functional interface)
  */
 
 // Java Thread example by Extending thread Class
@@ -46,8 +55,8 @@ class CreateThreadRunnableInterface implements Runnable {
     public static void main(String args[]) {
         CreateThreadRunnableInterface createThread2 = new CreateThreadRunnableInterface();
         /*
-        If you are not extending the Thread class,your class object would not be treated as a thread object.
-        So you need to explicitely create Thread class object.We are passing the object of your class that
+        If you are not extending the Thread class, your class object would not be treated as a thread object.
+        So you need to explicitly create Thread class object.We are passing the object of your class that
         implements Runnable so that your class run() method may execute.
          */
         Thread t = new Thread(createThread2);

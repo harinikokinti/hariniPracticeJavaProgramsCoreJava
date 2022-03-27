@@ -23,7 +23,8 @@ If it were a non-static method, JVM creates an object first then call main() met
 2. Can we execute a program without main() method?
 Ans) No, one of the ways was the static block, but it was possible till JDK 1.6.
 Since JDK 1.7, it is not possible to execute a Java class without the main method.
-
+3.What is the purpose of static methods and variables??
+The static methods or variables are shared among all the objects of the class
 
  */
 
@@ -74,8 +75,11 @@ class Calculate{
     }
 
     public static void main(String args[]){
-        int result=Calculate.cube(5);  //  here without creting object for the class Calculate we can access the static method with its class name
-        System.out.println(result);
+      //  Calculate c = new Calculate();
+        //System.out.println("the value of cube : " + c.cube(5));
+
+      int result=Calculate.cube(5);  //  here without creting object for the class Calculate we can access the static method with its class name
+      System.out.println(result);
     }
 }
 
@@ -122,3 +126,55 @@ class OverloadStaticMethodExample3
         pc.display();
     }
 }
+
+
+//  practice static variable   [ the static variable holds its value in the class memory for n number of objects of that class
+
+class StaticVariable {
+ static    int c = 1;
+    void counter() {
+        System.out.println("The counter value is " + ++c);
+    }
+}
+
+class StaticVariableTest {
+    public static void main(String args[]) {
+        StaticVariable sv = new StaticVariable();
+        StaticVariable sv2 = new StaticVariable();
+        sv.counter();
+        sv2.counter();
+
+        sv = new StaticVariable();
+        sv.counter();
+        sv = new StaticVariable();
+        sv.counter();
+
+
+
+    }
+
+}
+
+//  practice static method    ( the static method can change the static variable, can be accessed using its class name
+
+class StaticMethod {
+    static String collegeName = "SVCET";
+
+    void displayCollegeName() {
+        System.out.println("The college name is " + collegeName);
+    }
+
+    static void displayCollegeNameChanged () {
+        collegeName = "SITAMS";
+        System.out.println("The college name is " + collegeName);
+    }
+    public static void main(String args[]) {
+        StaticMethod sm = new StaticMethod();
+
+        sm.displayCollegeName();
+        StaticMethod.displayCollegeNameChanged();
+    }
+}
+
+
+

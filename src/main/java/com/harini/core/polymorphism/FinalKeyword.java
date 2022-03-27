@@ -2,11 +2,12 @@ package com.harini.core.polymorphism;
 /*
 The final keyword in java is used to restrict the user.
 Final can be:
-variable, method, class, parameter
+variable, method, class, parameter, objects
 Final keyword
 1. stop value change
 2. stop method overriding
 3. stop inheritance
+4. Objects can be instantiated only once
 
 --Java final variable
 variable : The uninitialized final variable can be initilised in constructor only.
@@ -21,8 +22,16 @@ If you make any class as final, you cannot extend it.
 -- Java final parameter
 If you declare any parameter as final, you cannot change the value of it.
 
+-- Java objects with final can be instantiated only once
+ex:
+final Sample sample = new Sample();
+sample.display();
+sample = new Sample(); // throws error
+
 -- static blank final variable
-A static final variable that is not initialized at the time of declaration is known as static blank final variable. It can be initialized only in static block.
+A static final variable that is not initialized at the time of declaration is known as static blank final variable.
+It can be initialized only in static block.
+
 
 QUESTIONS:
 1. Is final method inherited?

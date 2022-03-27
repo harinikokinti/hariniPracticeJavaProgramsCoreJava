@@ -1,10 +1,20 @@
 package com.harini.core;
 /*
+JAVA uses the Just-in-time (JIT) interpreter along with the compiler for the program execution.
+
+
+-- DIFFERENCE BETWEEN JVM, JRE, JDK
+JVM (Java Virtual ?Machine) It is a abstract machine. It is a specification that provides runtime environment in which java bytecode (.class files)
+are executed.
+JRE (Java Runtime Environment): It is a set of class libraries used by JVM to execute the code
+JDK (Java Development Kit) it is a tool used to compile, document java programs. It contains set of spi s(class libraries) along with
+ tools(java, javac) It includes JRE .
+
 JAVA VARIABLES:
 A variable is a container which holds the value while the Java program is executed
 There are three types of variables in Java:
 
-local variable : declared inside the body of the method. Cannot be declared as staticx
+local variable : declared inside the body of the method. Cannot be declared as static
 instance variable : declared inside the class but outside the body of the method. not declared as static.
 static variable : A variable which is declared as static is called static variable. It cannot be local.
                   You can create a single copy of static variable and share among all the instances of the class.
@@ -16,7 +26,7 @@ MEMORY ALLOCATION:
 Local Variables or Stack variables and Method invocations live on the STACK memory.
 But if there is any object reference variable (instance variable) inside a method, it gets allocated on the HEAP memory
 2. HEAP Memory:OR Garbage Collectible Heap area
-All Instance variables live on the HEAP, even indie a method body, it gets allocated on the HEAP not on the STACK
+All Instance variables live on the HEAP, even inside a method body, it gets allocated on the HEAP not on the STACK
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 DATA TYPES:
@@ -26,13 +36,13 @@ There are two types of data types in Java:
 
 Data Type	    Default Value	Default size   VALUE RANGE
 boolean	            false	    1 bit
-char	            '\u0000'	2 byte          Its value-range lies between '\u0000' (or 0) to '\uffff' (or 65,535 inclusive).
-byte	            0	        1 byte          -128 to 127
-short	            0	        2 byte          -32,768 to 32,767
-int	                0	        4 byte          - 2,147,483,648 (-2^31) to 2,147,483,647 (2^31 -1)
-long	            0L	        8 byte          -9,223,372,036,854,775,808(-2^63) to 9,223,372,036,854,775,807(2^63 -1)
-float	            0.0f	    4 byte          The float data type is a single-precision 32-bit IEEE 754 floating point.Its value range is unlimited.
-double	            0.0d        8 byte          The double data type is a double-precision 64-bit IEEE 754 floating point. Its value range is unlimited.
+char	            '\u0000'	2 byte (16 bits)         Its value-range lies between '\u0000' (or 0) to '\uffff' (or 65,535 inclusive).
+byte	            0	        1 byte (8 bits)         -128 to 127
+short	            0	        2 byte (16 bits)         -32,768 to 32,767
+int	                0	        4 byte (32 bits)        - 2,147,483,648 (-2^31) to 2,147,483,647 (2^31 -1)
+long	            0L	        8 byte (64 bits)         -9,223,372,036,854,775,808(-2^63) to 9,223,372,036,854,775,807(2^63 -1)
+float	            0.0f	    4 byte (32 bits)        The float data type is a single-precision 32-bit IEEE 754 floating point.Its value range is unlimited.
+double	            0.0d        8 byte (64 bits)         The double data type is a double-precision 64-bit IEEE 754 floating point. Its value range is unlimited.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ACCESS MODIFIERS
 There are two types of modifiers in Java: access modifiers and non-access modifiers.

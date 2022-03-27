@@ -237,7 +237,7 @@ class MultiTaasking extends Thread {
     }
 }
 
-// Program of performing single task by multiple threads 2 using anonymous class
+// Program of performing single task by multiple threads 2 using anonymous objects
 class Multitasking2 implements Runnable{
     public void run(){
         System.out.println("task one");
