@@ -10,7 +10,7 @@ public class MapPrograms {
         Map<String,Double> rates = new HashMap<>();
 
         Set<Map.Entry<String,Double>> entry = rates.entrySet();
-        entry.iterator().next().g
+
 
     }
 }
