@@ -1,0 +1,9 @@
+
+
+-- Jva 5 new features
+1. File nio is introduced
+Non blocking I/P
+
+    - Default channe1: Read and write data in junks (not in bytes or characters)
+    - Byte Channel : Reads and writes as a one go
+    - Random Access file : To read and write at any particular position

@@ -67,6 +67,7 @@ class Happychild extends Happy {
     void displayChild()  {System.out.println("Happy child display method"); }
 }
 
+
 class TestDownCasting {
     public static void main(String args[]){
        Happy happy =  new Happychild(); // Upcasting

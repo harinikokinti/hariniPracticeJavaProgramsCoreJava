@@ -5,6 +5,9 @@ import java.util.TreeSet;
 import java.util.*;
 
 /*
+-- Set:
+Does not allow duplicates, sorted, no imdex
+
 -- HashSet:
 HashSet class is used to create a collection that uses a hash table for storage. no duplicates, no order, allows null
 ITERABLE <-- COLLECTION <-- SET <-- AbstractSet <-- HashSet
@@ -38,6 +41,10 @@ ITERABLE <-- COLLECTION <-- SET <-- SORTEDSET <-- NAVIGABLESET <-- TreeSet
     Java TreeSet class maintains ascending order.
 
 
+-- Hashing
+The hashcode and equals methods must be same all the time
+It is allowed if equals is false and hashcode is true but not equals is true and hashcode is false
+Whenever equals is true, hashcode must be true
  */
 public class SetHashSetHashLinkedSetTreeSet {
 }

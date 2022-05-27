@@ -25,13 +25,14 @@ However, we cannot sort the elements of List.
 Collections class provides methods for sorting the elements of List type elements.
 public void sort(List list): It is used to sort the elements of List. List elements must be of the Comparable type.
 
-Note: String class and Wrapper classes implement the Comparable interface by default.
+Note:
+1. String class and Wrapper classes implement the Comparable interface by default.
 So if you store the objects of string or wrapper classes in a list, set or map, it will be Comparable by default.
+2. If you use objects of user defined class, the class must implement Comparable interface to sort the collection(list or set or map)
+Ex: Set<Employee> ,Employee must implement comparable
 
  */
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 // Example 1
 
@@ -85,9 +86,11 @@ class EmployeeNew implements Comparable<EmployeeNew> { // EmployeeNew is user de
 
     @Override
     public int compareTo(EmployeeNew e) {
-      if(this.id == e.id)  return 0;  // sorting based on id
+     return this.getId() - e.getId();  // sorting based on id
+/*
+      if(this.id == e.id)  return 0;  // sorting based on id  2nd method
         else if(this.id > e.id) return 1;
-        else return -1;
+        else return -1;  */
 
         /* if(this.salary == e.salary)  return 0;  //  sorting based on salary
         else if(this.salary > e.salary) return 1;
@@ -107,13 +110,30 @@ class EmployeeNew implements Comparable<EmployeeNew> { // EmployeeNew is user de
 
 class TestComparableInterface {
     public static void main(String args[]) {
+
+        // sorting with List ( it needs Collections.sort()
         List<EmployeeNew> employees = new ArrayList<>();
         employees.add(new EmployeeNew(1,"Ravi", 45000f));
         employees.add(new EmployeeNew(3,"Ayesha", 35000f));
         employees.add(new EmployeeNew(2,"Sukumar", 75000f));
         Collections.sort(employees);
 
+        System.out.println("Print the Employee List");
         for(EmployeeNew e : employees) {
+            System.out.println(e.id + " " + e.name + " " + e.salary);
+        }
+
+        // Sorting with Set
+       // Set<EmployeeNew> employeeSet = new HashSet<>();  // will not sort
+        Set<EmployeeNew> employeeSet = new LinkedHashSet<>();  // should sort , here not sorting, doubt
+        //Set<EmployeeNew> employeeSet = new TreeSet<>();  // sorts the set
+        employeeSet.add(new EmployeeNew(1,"Ravi", 45000f));
+        employeeSet.add(new EmployeeNew(3,"Ayesha", 35000f));
+        employeeSet.add(new EmployeeNew(2,"Sukumar", 75000f));
+        employeeSet.add(new EmployeeNew(4,"Sukumar", 75000f));
+
+        System.out.println("Print the Employee Set");
+        for(EmployeeNew e : employeeSet) {
             System.out.println(e.id + " " + e.name + " " + e.salary);
         }
 

@@ -128,20 +128,29 @@ class TestMultipleInheritance2 {
 // Java 8 Default Method in Interface , Java 8 Static Method in Interface
 interface Sam1 {
     void display();
-    default void showDefault() { System.out.println("show DEFAULT method body");}
+    default void showDefault() {
+        System.out.println("show DEFAULT method body");
+        privateMethod(); // can access private method only from default method
+    }
     static void showStatic() { System.out.println("show STATIC method body");}
+    private void privateMethod() {   // private method introduced in java 9
+        System.out.println("Private method body");
+    }
 }
 
 class GetData3 implements Sam1
 {
     public void display() { System.out.println("Override the abstract method");}
+//    public void showDefault() {
+//        System.out.println("Default method overriden");
+//    }
 }
 
 class TestJava8DefaultAndStaticMethods {
     public static void main(String args[]) {
         GetData3 getData3 = new GetData3();
         getData3.display();
-        getData3.showDefault();
+        getData3.showDefault(); // if this is overriden , it returns overriden logic, if not it returns private method implementation also
         Sam1.showStatic();
     }
 }

@@ -11,7 +11,7 @@ import java.io.IOException;
 --Rules for Java Method Overriding
 The method must have the same name as in the parent class
 The method must have the same parameters or arguments as in the parent class.
-The return types must be compatible: Whatever the super class declares as a return type, the subclass should declare either the same type or the sb class type
+The return types must be compatible: Whatever the super class declares as a return type, the subclass should declare either the same type or the sub class type
 There must be an IS-A relationship (inheritance).
 The method cannot be less accessible. Example: if the super class method is public, you should not make it private while overriding it in subclass
 

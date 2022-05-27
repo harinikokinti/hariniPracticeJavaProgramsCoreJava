@@ -1,9 +1,10 @@
 package com.harini.core.multithreading;
 /*
 -- How to create thread
-   There are two ways to create a thread:
+   There are three ways to create a thread:
    1. By extending Thread class
    2. By implementing Runnable interface.
+   3. Implements Callable
 
     1. Extending Thread class
       Java provides Thread class to achieve thread programming. Thread class provides constructors
@@ -39,8 +40,8 @@ public class CreateThread  extends Thread {
 }
     class Test {
     public static void main(String args[]) {
-        CreateThread createThread = new CreateThread();
-        createThread.start();
+        CreateThread createThread = new CreateThread();  // created  a thread
+        createThread.start();  // in runnable state
     }
 
 }

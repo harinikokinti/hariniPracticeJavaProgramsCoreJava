@@ -31,11 +31,16 @@ class Customer  {
     int amount = 10000;
 
     synchronized void withdraw(int amount) {
-        if(this.amount < amount) {
-            try { wait() ; } catch (Exception e) { System.out.println(e); }  // here if there is no enough amount to withdraw, the thread waits by releasing the lock on the object
+        if (this.amount < amount) {
+            try {
+                wait();
+            } catch (Exception e) {
+                System.out.println(e);
+            }  // here if there is no enough amount to withdraw, the thread waits by releasing the lock on the object
+        } else {
+            this.amount -= amount;
+            System.out.println("Amount Withdraw Completed");
         }
-        this.amount-= amount;
-        System.out.println("Amount Withdraw Completed");
     }
 
     synchronized void deposit(int amount) {
@@ -50,7 +55,7 @@ class TestInterThreadCooperation {
         Customer c = new Customer();
         new Thread () {
             public void run() {
-                c.withdraw(15000); }
+                c.withdraw(5000); }
             }.start();
 
         new Thread () {

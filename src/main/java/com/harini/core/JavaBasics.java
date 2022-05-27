@@ -1,14 +1,54 @@
 package com.harini.core;
 /*
+-- JDK  (Java Developement Kit)
+JRE + Development tools(Compiler, Interpreter, Debugger, javadoc, keytool)
+It has both developemnt tools and JRE.
+If we want to develop and run the java programs then JDK is must
+
+-- JRE (Java Runtime Environment)
+JVM + Class Libraries or runtime libraries
+JRE is used only to run Java programs
+If we dont want to develop, but only to run the Java programs or Java applications, then JRE is enough
+JRE is platform dependent.(Ex: I developed a java appli in windows and if I want to run it in linux or mac, it should have
+JRE specific to linux or JRE specicfc to mac)
+
+-- JVM (Java Virtual Machine)
+It is the heart of Java Programming
+It converts Java bytecode into machine specific code.
+Platform dependent, provides garbage collection, security, memory management features etc.
+We can also customise JVM (allocation min and max memory to JVM)]
+JVM is called Abstract virtual machine because, it provides an interface which does not depend on underlying OS or hardware.
+
+-- Steps to Run Java Programs
+               java compiler             JVM(JIT)                 CPU
+Java Program       --->   Java Bytecode    --->   Machine code   ---> output
+(helloWorld.java)         (helloworld.class)
+
+    The java program is compiled by the Compiler present in JDK and generates Byte code with .class extension.
+    The bytecode is platform independent and runs on any device having the JRE.
+    After compilation, the bycode enters into Runtime process which has below steps
+        a) Class Laoder :  The class loader dynamically loads the classes essential for running the program in the Java Virtual Machine.
+        When the JVM is started, three class loaders are used:
+        Bootstrap class loader: loads classes from jre/lib/rt.jar
+        Extensions class loader: loads classes from jre/lib/ext
+        System class loader: Loads classes from CLASSPATH
+        b) Byte code verifier
+        c) Interpreter
+
+
+-- Difference between JDK, JRE, JVM
+1. JDK is for development purpose, JRE is for running the java programs.
+2. JDK, JRE both contain JVM, so we can run our java program.
+3. JVM is the heart of the java programming , and provides platform independence.
+
+-- JIT (Just in time Compiler) Fast compiler
 JAVA uses the Just-in-time (JIT) interpreter along with the compiler for the program execution.
+It is a part of JVM
+It helps JVM to convert bytecode to machine code at run time
+It performs some optimization on code.
+Very frequently used methods are compiled once and kept ino memory (cached).
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
--- DIFFERENCE BETWEEN JVM, JRE, JDK
-JVM (Java Virtual ?Machine) It is a abstract machine. It is a specification that provides runtime environment in which java bytecode (.class files)
-are executed.
-JRE (Java Runtime Environment): It is a set of class libraries used by JVM to execute the code
-JDK (Java Development Kit) it is a tool used to compile, document java programs. It contains set of spi s(class libraries) along with
- tools(java, javac) It includes JRE .
 
 JAVA VARIABLES:
 A variable is a container which holds the value while the Java program is executed
@@ -23,10 +63,16 @@ static variable : A variable which is declared as static is called static variab
 
 MEMORY ALLOCATION:
 1. STACK Memory:
-Local Variables or Stack variables and Method invocations live on the STACK memory.
+Local Variables or Stack variables and Method invocations(calls) live on the STACK memory.
 But if there is any object reference variable (instance variable) inside a method, it gets allocated on the HEAP memory
+If Stack is full,  java program throws StackOverflowEror
 2. HEAP Memory:OR Garbage Collectible Heap area
+new generation heap
+old generation heap
+If Heap is full, the program throws OutofMemoryException
 All Instance variables live on the HEAP, even inside a method body, it gets allocated on the HEAP not on the STACK
+3. MetaSpace: introduced in java 8
+Classes, static variables are saved on this memory
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 DATA TYPES:
@@ -36,13 +82,13 @@ There are two types of data types in Java:
 
 Data Type	    Default Value	Default size   VALUE RANGE
 boolean	            false	    1 bit
-char	            '\u0000'	2 byte (16 bits)         Its value-range lies between '\u0000' (or 0) to '\uffff' (or 65,535 inclusive).
+char	            '\u0000'	2 byte (16 bits)        (unicode) Its value-range lies between '\u0000' (or 0) to '\uffff' (or 65,535 inclusive).
 byte	            0	        1 byte (8 bits)         -128 to 127
 short	            0	        2 byte (16 bits)         -32,768 to 32,767
-int	                0	        4 byte (32 bits)        - 2,147,483,648 (-2^31) to 2,147,483,647 (2^31 -1)
-long	            0L	        8 byte (64 bits)         -9,223,372,036,854,775,808(-2^63) to 9,223,372,036,854,775,807(2^63 -1)
-float	            0.0f	    4 byte (32 bits)        The float data type is a single-precision 32-bit IEEE 754 floating point.Its value range is unlimited.
-double	            0.0d        8 byte (64 bits)         The double data type is a double-precision 64-bit IEEE 754 floating point. Its value range is unlimited.
+int	                0	        4 byte (32 bits)        (Whole numbers) - 2,147,483,648 (-2^31) to 2,147,483,647 (2^31 -1)  .
+long	            0L	        8 byte (64 bits)        (real numbers) -9,223,372,036,854,775,808(-2^63) to 9,223,372,036,854,775,807(2^63 -1)
+float	            0.0f	    4 byte (32 bits)        (Single precision) The float data type is a single-precision 32-bit IEEE 754 floating point.Its value range is unlimited.
+double	            0.0d        8 byte (64 bits)        (double precision) The double data type is a double-precision 64-bit IEEE 754 floating point. Its value range is unlimited.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- ACCESS MODIFIERS
 There are two types of modifiers in Java: access modifiers and non-access modifiers.
@@ -59,8 +105,14 @@ Note:Here default is more restrictive than protected. If you don't use any modif
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- TYPE CASTING
+
+- Typecasting
 Convert a value from one data type to another data type is known as type casting.
 The automatic conversion is done by the compiler and manual conversion performed by the programmer.
+For example:
+//here in the brackets we have mentioned long keyword, this is casting
+double num = 10001.99;
+long num2 = (long)num;
 Types:
 1. Widening Casting (automatically) - converting a smaller type to a larger type size.
                                       byte -> short -> char -> int -> long -> float -> double.
@@ -81,13 +133,13 @@ Types:
 --UPCASTING and DOWNCASTING
 Upcasting:
 If the reference variable of Parent class refers to the object of Child class, it is known as upcasting.
-For upcasting, we can use the reference variable of class type or an interface type
+For upcasting, we can use the reference variable of parent class type or an interface type
 class A{}
 class B extends A{}
 A a=new B();//upcasting
 
 DownCasting:
-When Subclass type refers to the object of Parent class, it is known as downcasting.
+When Subclass reference variable refers to the object of Parent class, it is known as downcasting.
 
 1. If we perform downcasting by typecasting, ClassCastException is thrown at runtime.
 Ex: NexonCar nexoncar = (NexonCar)new Car; //  Compiles successfully but ClassCastException is thrown at runtime
@@ -126,11 +178,9 @@ If we don't implement Cloneable interface, clone() method generates CloneNotSupp
 The clone() method is defined in the Object class.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Wrapper classes
-The wrapper class in Java provides the mechanism to convert primitive into object and object into primitive.
-
-Since J2SE 5.0, autoboxing and unboxing feature convert primitives into objects and objects into primitives automatically.
- The automatic conversion of primitive into an object is known as autoboxing and vice-versa unboxing.
+-- Wrapper class
+A wrapper class converts the primitive data type such as int, byte, char, boolean, etc. to the objects of their respective classes
+such as Integer, Byte, Character, Boolean, etc.
 
  Use of Wrapper classes:
  Change the value in Method:
@@ -149,17 +199,61 @@ long	        Long
 float	        Float
 double	        Double
 
+-- Autoboxing
+Converting the primitive datatype (int, float, double, char) to the wrapper classes (Integer, Float, Double, Character) object automatically.
 Example of Autoboxing:
 int a=20;
 Integer i=Integer.valueOf(a);//converting int into Integer explicitly
-Integer j=a;//autoboxing, now compiler will write Integer.valueOf(a) internally
+Integer j=a;//autoboxing, now compiler will write Integer.valueOf(a) internally, automatically
 
 Example of Unboxing:
 Integer a=new Integer(3);
 int i=a.intValue();//converting Integer to int explicitly
-int j=a;//unboxing, now compiler will write a.intValue() internally
+int j=a;//unboxing, now compiler will write a.intValue() internally, automatically
+
+Note: Autoboxing is used in the collections
+Ex: ArrayList<Integer> list = new ArrayList<>();
+list.add(5);  // auotboxing is happening here, conversion of 5  (int) into Integer object
+list.add(4);
+
+Note: Since J2SE 5.0, autoboxing and unboxing feature convert primitives into objects and objects into primitives automatically.
+ The automatic conversion of primitive into an object is known as autoboxing and vice-versa unboxing.
 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- continue keyword
+The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.
+
+This example skips the value of 4:
+for (int i = 0; i < 10; i++) {
+  if (i == 4) {
+    continue;
+  }
+  System.out.println(i);
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- difference between iteration and enumeration in java
+1) The main difference between Iterator and Enumeration is removal of the element while traversing the collection.
+Iterator can remove the element during traversal of collection as it has remove() method. Enumeration does not have remove() method.
+2) Enumeration is fail-safe in nature, means it does not throw ConcurrentModificationException, when the structure is modified during iteration
+whereas, Iteration is fail fast, it throws the exception when tried to change the collection's structure dring iteration.
+
+-- Unicode
+   Java uses Unicode to represent the characters.
+
+-- Literals
+Any constant value that is assigned to a variable is called literal in Java. For example –
+// Here 101 is a literal
+int num = 101
+----------------------------------------------------------------------------------------------------------------------------------
+
+-- Hashing
+The hashcode and equals methods must be same all the time
+It is allowed if equals is false and hashcode is true but not equals is true and hashcode is false
+Whenever equals is true, hashcode must be true
 
 
  */

@@ -20,6 +20,7 @@ Predicate<T>	It represents a predicate (boolean-valued function) of one argument
 BiFunction<T,U,R>	It represents a function that accepts two arguments and returns a a result.
 BinaryOperator<T>	It represents an operation upon two operands of the same data type. It returns a result of the same type as the operands.
 BiPredicate<T,U>	It represents a predicate (boolean-valued function) of two arguments.
+Supplier<T>	It represents a supplier of results.
 BooleanSupplier	It represents a supplier of boolean-valued results.
 DoubleBinaryOperator	It represents an operation upon two double type operands and returns a double type value.
 DoubleConsumer	It represents an operation that accepts a single double type argument and returns no result.
@@ -48,7 +49,6 @@ LongUnaryOperator	It represents an operation on a single long type operand that 
 ObjDoubleConsumer<T>	It represents an operation that accepts an object and a double argument, and returns no result.
 ObjIntConsumer<T>	It represents an operation that accepts an object and an integer argument. It does not return result.
 ObjLongConsumer<T>	It represents an operation that accepts an object and a long argument, it returns no result.
-Supplier<T>	It represents a supplier of results.
 ToDoubleBiFunction<T,U>	It represents a function that accepts two arguments and produces a double type result.
 ToDoubleFunction<T>	It represents a function that returns a double type result.
 ToIntBiFunction<T,U>	It represents a function that accepts two arguments and returns an integer.
@@ -79,11 +79,19 @@ interface SayableNew {
 }
 public class FunctionalInterfaces {
     public static void main(String args[]) {
-        SayableNew sn = () -> { System.out.println("Expression to print a functional interface info"); };
+        /*  // Interface implementation using anonymous class
+        SayableNew sn = new SayableNew() {
+            @Override
+            public void say() {
+                System.out.println("Expression to print a functional interface info");
+            }
+        };
+         */
+
+        SayableNew sn = () ->  System.out.println("Expression to print a functional interface info");
             sn.say();
             sn.defaultMethod();
             SayableNew.staticMethod();
-
     }
 }
 // Example 2
@@ -101,11 +109,12 @@ class PrintSomething implements SayableNew {
  }
 
 
- // Example 3
+ // Example 3  // A functional interface can extend a non-functional interface.
 interface doable {
     default void doIt() { System.out.println("Default method of Non functional interface ");}
  }
 
+ @FunctionalInterface
 interface SayableNew1 extends doable {
     void say();
 }
@@ -130,14 +139,26 @@ class BiConsumerInterfaceExample {
         System.out.println(name+" "+age);
     }
     public static void main(String[] args) {
-        // using method reference
-        BiConsumer<String, Integer> biCon = (a,b) ->  showDetails(a,b); // Here, showDetails provides implementation for the method accept present in Biconsumer
-        BiConsumer<String, Integer> biCon1 = BiConsumerInterfaceExample::showDetails; // replaced with method reference, h
-        biCon.accept("Rama", 20);
-        biCon.accept("Shyam", 25);
+
+        // using normal anonymous implemenation class for the interface
+        BiConsumer<String,Integer> bcon = new BiConsumer<String, Integer>() {
+            @Override
+            public void accept(String name, Integer age) {
+                showDetails(name,age);
+            }
+        };
+
+        bcon.accept("Vibha", 26);
+
         // Using lambda expression
         BiConsumer<String, Integer> biCon2 = (name, age)->showDetails(name,age);
         biCon2.accept("Peter", 28);
+
+        // using method reference
+        BiConsumer<String, Integer> biCon = (a,b) ->  showDetails(a,b); // Here, showDetails method is called in accept method(accept method is implemented), present in Biconsumer
+        BiConsumer<String, Integer> biCon1 = BiConsumerInterfaceExample::showDetails; // replaced with method reference, h
+        biCon1.accept("Rama", 20);
+        biCon1.accept("Shyam", 25);
     }
 }
 
@@ -291,7 +312,7 @@ class TestBoy{
 class PredicateInterfaceExample {
     public static void main(String args[]) {
         Predicate<Integer> pr = age -> age > 18;
-       System.out.println(pr.test(10));
+       System.out.println(pr.test(19));
     }
 }
 

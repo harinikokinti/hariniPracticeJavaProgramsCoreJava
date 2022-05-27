@@ -1,8 +1,70 @@
 COLLECTION FRAMEWORK
 -------------------
+
+
+
+
+
+
+
+
+
+
+    - Set -Does not allow duplicates, sorted, no imdex
+        - HashsSet - faster search, works based on hashing techni
+        - TreeSet -
+            - Comparable
+                - compareTo(Object obj)
+            - Comparator
+                - compare(Object obj1, Object obj2
+        - LinkedHashSet - ordered, maintains insertion order, follows Hashing technique
+    - Queue - FIFO
+        - Deque - doubly queue, operation on both sides
+            - PriorityQueue
+            - BlockingQueue
+
+    - Map - maintains data as key, value pair
+        - HashTable - synchronised,
+        - HashMap - faster search with key(any type primitive or object)
+        - TreeMap   -
+        - LinkedHashMap
+
+        - Map.Entry
+        - key
+        - value
+
+    - Iterator -
+    - ListIterator - goes forward and backward
+    - forEach
+
+
+    - Arrays.asList(empArr)  -- convert array to a list
+    - empList.toArray()   -- convert list to array
+    - empSet.toArray()  -- convert set to array
+    - convert array to set
+            1st convert array to list and then convert to set
+            Set set = new HashSet(Arrays.asList(empArr));
+
+
+
+
+
+
+
+
+
 --The Collection framework represents a unified architecture for storing and manipulating a group of objects.
-It has Interfaces and its implementations, i.e., classes and Algorithm
+It has Interfaces and its implementations, i.e., classes and Algorithms(search,sort,aggregate etc)
 Java Collections can achieve all the operations that you perform on a data such as searching, sorting, insertion, manipulation, and deletion.
+
+-- Advantages:
+Code reusuability
+Enables to perform operations on group of objects
+improves program speed and performance
+
+-- Earlier , these 2 container classes were there
+Dictionary  (key/value)
+Vector  (Dynamic array)
 
 Java Collection framework provides many interfaces ( List, Queue, Deque, Set) and
 classes (ArrayList, LinkedList, Vector, PriorityQueue, HashSet, LinkedHashSet, TreeSet).
@@ -64,3 +126,141 @@ Collection class is used exclusively with static methods that operate on or retu
 Java Collection class supports the polymorphic algorithms that operate on collections.
 Java Collection class throws a NullPointerException if the collections or class objects provided to them are null.
 --------------------------------------------
+
+ArrayList class uses a dynamic array for storing the elements. It is like an array, but there is no size limit. We can add or remove elements anytime.
+The important points about Java ArrayList class are:
+    Java ArrayList class can contain duplicate elements.
+    Java ArrayList class maintains insertion order.
+    Java ArrayList class is non synchronized.
+    Java ArrayList allows random access because array works at the index basis.
+    In ArrayList, manipulation is little bit slower than the LinkedList in Java because a lot of shifting needs to occur if any element is removed from the array list.
+
+--Hierarchy of ArrayList class
+ITERABLE <-- COLLECTION <-- LIST<-- AbstractList <-- ArrayList
+
+-- Constructors of ArrayList
+Constructor	                                    Description
+ArrayList()	                                    It is used to build an empty array list.
+ArrayList(Collection<? extends E> c)	        It is used to build an array list that is initialized with the elements of the collection c.
+ArrayList(int capacity)	                        It is used to build an array list that has the specified initial capacity.
+
+--Use of forEach:
+There are two forEach() method in Java 8, one defined inside Iterable, and the other inside java.util.stream.Stream class.
+If the purpose of forEach() is just iteration then you can directly call it like list.forEach() or set.forEach() but
+if you want to perform some operations like filter or map then it better first get the stream and then perform that operation and finally call forEach() method.
+
+-----------
+
+--Java LinkedList class uses a doubly linked list to store the elements.
+    Java LinkedList class can contain duplicate elements.
+    Java LinkedList class maintains insertion order.
+    Java LinkedList class is non synchronized.
+    In Java LinkedList class, manipulation is fast because no shifting needs to occur.
+    Java LinkedList class can be used as a list, stack or queue.
+--Doubly Linked List
+In the case of a doubly linked list, we can add or remove elements from both sides.
+
+----------
+
+Difference between Array and ArrayList
+/*
+Array                                                ArrayList
+Array is static in size.                                ArrayList is dynamic in size.
+An array is a fixed-length data structure.	            ArrayList is a variable-length data structure. It can be resized itself when needed.
+Must provide size while initializing                    Not mandatory
+Fast operation because of the fixed sizze               The Resize operation slows down the ArrayList in performnace
+An array can store both objects and primitives type.	We cannot store primitive type in ArrayList. It automatically converts primitive type to object.
+Array can be multi-dimensional.                         ArrayList is always single-dimensional.
+
+--Similarities
+Array and ArrayList both are used for storing elements.
+Array and ArrayList both can store null values.
+They can have duplicate values.
+They do not preserve the order of elements.
+ */
+
+/*
+-- Difference between ArrayList and LinkedList
+ArrayList	                                                                                LinkedList
+1) ArrayList internally uses a dynamic array to store the elements.	            LinkedList internally uses a doubly linked list to store the elements.
+2) Manipulation with ArrayList is slow because it internally uses an array.     Manipulation with LinkedList is faster than ArrayList because it uses a doubly linked list, so no bit shifting is required in memory.
+If any element is removed from the array, all the bits are shifted in memory.
+3) An ArrayList class can act as a list only because it implements List only.	LinkedList class can act as a list and queue both because it implements List and Deque interfaces.
+4) ArrayList is better for storing and accessing(searching) data.               LinkedList is better for manipulating(add/remove) data.
+
+-- Difference between ArrayList and Vector
+Both are same in everything except, Vector is synchronized(thread safe), but ArrayList not
+ArrayList has fastermrandom access, for frequent reads
+
+-- When to use ArrayList and LinkedList in Java
+ArrayList is better to access data(search operation)  time complexity to access elements O(1)
+LinkedList is better to manipulate(add and remove operations) data. time complexity to access elements O(n/2)
+
+-- COMPARE ARRAYLISTS
+There are following ways to compare two ArrayList in Java:
+Java equals() method
+Java removeAll() method
+Java retainAll() method
+Java ArrayList.contains() method
+Java contentEquals() method
+Java Stream interface  : System.out.print("Common elements: " +firstList.stream().filter(secondList::contains).collect(Collectors.toList()));
+
+-- REVERSE ArrayList
+  Collections.reverse(lIST);
+
+-- convert ArrayList to Array AND Array to ArrayList
+ System.out.println("Converting ArrayList to Array" );
+ String[] item = fruitList.toArray(new String[fruitList.size()]);
+
+System.out.println("Converting Array to ArrayList" );
+List<String>l2 = new ArrayList<>();
+l2 =  Arrays.asList(item);
+
+---------------------------------------------------------
+
+-- Set -Does not allow duplicates, sorted, no imdex
+    - HahsSet - faster search, works based on hashing techni
+    - TreeSet -
+        - Comparable
+            - compareTo(Object obj)
+        - Comparator
+            - compare(Object obj1, Object obj2
+    - LinkedHashSet - ordered, maintains insertion order, follows Hashing technique
+
+-- HashSet:
+HashSet class is used to create a collection that uses a hash table for storage. no duplicates, no order, allows null
+ITERABLE <-- COLLECTION <-- SET <-- AbstractSet <-- HashSet
+    HashSet doesn't maintain the insertion order. Here, elements are inserted on the basis of their hashcode.
+    HashSet stores the elements by using a mechanism called hashing.
+    HashSet contains unique elements only.
+    HashSet allows null value.
+    HashSet class is non synchronized.
+    HashSet is the best approach for search operations.
+    The initial default capacity of HashSet is 16, and the load factor is 0.75.
+
+-- Difference between List and Set
+List	                                                            Set
+1. The List is an ordered sequence.	                                1. The Set is an unordered sequence.
+2. List allows duplicate elements	                                2. Set doesn’t allow duplicate elements.
+3. Elements by their position can be accessed, index based.         3. Position access to elements is not allowed, not index based.
+4. Multiple null elements can be stored.	                        4. Null element can store only once.
+5. List implementations are ArrayList, LinkedList, Vector, Stack	5. Set implementations are HashSet, LinkedHashSet.
+
+-- LinkedHashSet:
+    LinkedHashSet class is a Hashtable and Linked list implementation of the set interface.
+ITERABLE <-- COLLECTION <-- SET <-- AbstractSet <-- HashSet <-- LinkedHashSet
+
+-- TreeSet:
+TreeSet class implements the Set interface that uses a tree for storage. no duplicates, no null, by default ascending order
+ITERABLE <-- COLLECTION <-- SET <-- SORTEDSET <-- NAVIGABLESET <-- TreeSet
+    Java TreeSet class contains unique elements only like HashSet.
+    Java TreeSet class access and retrieval times are quiet fast.
+    Java TreeSet class doesn't allow null element.
+    Java TreeSet class is non synchronized.
+    Java TreeSet class maintains ascending order.
+
+
+-- Hashing
+The hashcode and equals methods must be same all the time
+It is allowed if equals is false and hashcode is true but not equals is true and hashcode is false
+Whenever equals is true, hashcode must be true

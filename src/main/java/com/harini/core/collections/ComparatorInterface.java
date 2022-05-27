@@ -41,7 +41,6 @@ class StudentOld {
         this.name=name;
         this.age=age;
     }
-
 }
 
 
@@ -63,26 +62,75 @@ class NameComparator implements Comparator<StudentOld> {
 
 public class ComparatorInterface {
     public static void main(String args[]) {
+        // Student List
+        System.out.println("---Students using List ---");
         List<StudentOld> studentList = new ArrayList<>();
         studentList.add(new StudentOld(101,"VijayOld",23));
         studentList.add(new StudentOld(106,"AjayOld",27));
         studentList.add(new StudentOld(105,"JaiOld",21));
 
         //Sorting based on Age
-        System.out.println("Sorting based on Age");
+        System.out.println("Sorting the list based on Age");
         Collections.sort(studentList, new AgeComparator());
        for(StudentOld s: studentList) {
            System.out.println(s.rollno + " " + s.name + " " + s.age);
        }
 
        //soritng based on Name
-        System.out.println("Sorting based on Name");
+        System.out.println("Sorting the list based on Name");
         Collections.sort(studentList, new NameComparator());
         for(StudentOld s: studentList) {
             System.out.println(s.rollno + " " + s.name + " " + s.age);
         }
+
+
+
+
+
+        // Student Set
+        System.out.println("---Students using Set ---");
+       // Set<StudentOld> studentSet = new HashSet<>();
+       // Set<StudentOld> studentSet = new LinkedHashSet<>();
+
+        Comparator AgeComparator = new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                if (o1 instanceof StudentOld && o2 instanceof StudentOld) {
+                    return ((StudentOld) o1).age - ((StudentOld) o2).age;
+                }
+                return 0;
+            }
+        };
+
+
+
+        Set<StudentOld> studentSet = new TreeSet<>(AgeComparator); // pass Agecomparator here
+        studentSet.add(new StudentOld(101,"VijayOld",23));
+        studentSet.add(new StudentOld(106,"AjayOld",27));
+        studentSet.add(new StudentOld(105,"JaiOld",21));
+
+        //Sorting based on Age
+        System.out.println("Sorting the set based on Age");
+       // Collections.sort(studentSet, new AgeComparator());
+        for(StudentOld s: studentSet) {
+            System.out.println(s.rollno + " " + s.name + " " + s.age);
+        }
+
+/*
+        //sorting based on Name
+        System.out.println("Sorting the set based on Name");
+       // Collections.sort(studentSet, new NameComparator());
+        for(StudentOld s: studentSet) {
+            System.out.println(s.rollno + " " + s.name + " " + s.age);
+        } */
     }
 }
+
+
+
+
+
+
 
 // Java 8 Comparator interface is a functional interface that contains only one abstract method.
 // Now, we can use the Comparator interface as the assignment target for a lambda expression or method reference.

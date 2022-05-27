@@ -12,6 +12,7 @@ EXCEPTIONAL HANDLING
                           IOException                                         StackOverflowError
                           SQLException                                        VirtualMachineError
                           ClassNotFoundException etc.,                        OutOfMemoryError etc.,
+                          BrokenBarrierException
                           RuntimeException
                                         |
                                        ArithmeticException
@@ -31,7 +32,7 @@ EXCEPTIONAL HANDLING
 3. Error : Error is irrecoverable. Some example of errors are OutOfMemoryError, VirtualMachineError, AssertionError etc.
 --------------------------------------------------------------------------
 -- Exception Keywords
-1. try : The try block contain the exception code.
+1. try : The try block contain the exception code or any suspicious code.
          The try block must be followed by either catch or finally.
          It must be used within the method.
          Note: If an exception occurs at the particular statement in the try block, the rest of the block code will not execute.

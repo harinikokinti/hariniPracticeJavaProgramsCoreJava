@@ -1,4 +1,4 @@
-package com.harini.javaPrograms;
+package com.harini.OtherJavaConcepts;
 
 import java.util.concurrent.TimeUnit;
 

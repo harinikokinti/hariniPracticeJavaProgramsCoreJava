@@ -1,4 +1,4 @@
-package com.harini.javaPrograms.Basic;
+package com.harini.OtherJavaConcepts;
 
 
 // practice Thread creation 2 ways

@@ -1,15 +1,76 @@
 MULTITHREADING
 --------------
 
+Multithreading
+    - process vs Thread
+    - Thread Lifecycle
+        - New
+        - Runnable
+        - Running
+        - Wait
+        - Sleep
+        - blocked
+        - Terminated/Dead
+     - Ways to create Thread
+        - Extending Thread Class
+        - Implementing Runnable Interface
+        - Implements Callable interface
+            - override call method
+            - call() returns a value after execution
+            - create ExecutorService instance with threadPool (fixed, caches, single)
+                ExecutorService exs = Executors.newFixedThreadPool(5);
+            - submit the instance of the class implementing callable interface
+                Future<String> f1 = exs.submit(c1);
+            - returns reference of Future object to refer the thread submitted
+            - get the value returned by thread from future
+                System.out.println(f2.get());
+            - shutdown the ExecutorService
+
+    - Thread Constructs
+        - sleep (invoking on thread, can be interrupted, will not release lock)
+        - wait (invoking on object, releases lock once notified)
+        - notify ( notifies single thread, if 4 threads are waiting, it wakes up the any thread)
+        - notifyall ( it wakes up all 4 threads)
+        - join (waits until it dies)
+        - yield (gives  slot for other thread and goes back to runnable, )
+
+    - Thread Syncronization
+        - all operations should happen in Atomic way, Visible, Ordered
+        - at a time only 1 thread is allowed to access a synchronised method or block
+        - Synchronised block  (mostly preferred, since it will not lock the entire method for long time)
+            synchronised(account) { // acquire lock, blocked state
+            }
+        - synchronised method
+            synchronised void fundTransfer() {}
+
+    - how to make collections thread safe
+        - Collections.synchronised(list)
+        - Concurrent Collections(use thread safe collections)
+            - BlockingQueue
+            - ConcurrentMap
+            - ConcurrentHashMap
+            - ConcurrentSkipListMap
+
+    - Thread contention
+        Muktiple threads trying to access a locked resource
+
+    - Deadlock:
+        if 2 threads (t1,t2), resources r1, r2 , t1 trying r1(acaquired lock by t2) and t2 trying r2( acquired lock by t1),
+        cyclic dependency happens, this is deadlock
+
+
+
+
+
 Multitasking is a process of executing multiple tasks simultaneously. We use multitasking to utilize the CPU. Multitasking can be achieved in two ways:
 
 1) Process-based Multitasking (Multiprocessing)
-    Each process has an address in memory. In other words, each process allocates a separate memory area.
+    Each process has an address in memory, runs independently. In other words, each process allocates a separate memory area.
     A process is heavyweight.
     Cost of communication between the process is high.
     Switching from one process to another requires some time for saving and loading registers , memory maps, updating lists, etc.
 2) Thread-based Multitasking (Multithreading)
-    Threads share the same address space.
+    Threads share the same address space(stack).
     A thread is lightweight.
     Cost of communication between the thread is low.
 
@@ -33,9 +94,10 @@ Non-Runnable (Blocked) :  not eligible to run , but still alive
 Terminated : dead state when its run() method exits.
 
 -- How to create thread
-   There are two ways to create a thread:
+   There are three ways to create a thread:
    1. By extending Thread class
    2. By implementing Runnable interface.
+   3. Implements Callable
 
     1. Java Thread class
       Java provides Thread class to achieve thread programming. Thread class provides constructors

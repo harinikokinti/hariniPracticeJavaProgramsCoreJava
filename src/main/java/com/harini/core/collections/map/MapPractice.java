@@ -40,7 +40,7 @@ public class MapPractice {
         map.entrySet().stream().forEach(p->System.out.println(p.getKey()  + " " + p.getValue().empID + " " + p.getValue().empName));
 
 
-               // forEach(System.out::println);
+        // forEach(System.out::println);
 
     }
 }

@@ -24,6 +24,12 @@ Note:
  An interface and an abstract class is almost similar except that you can create constructor in the abstract class
  whereas you can't do this in interface.
 
+ -- Major Difference:
+ From Java 8, the big difference between the Interface and the Abstract class is
+ Using Interfaces, can impleemnt mutiple inheritance whereas Abstract class cannot be used.
+ Highest level of Abstraction using Inerface.
+ Interfaces are like standards where all its implementation classes are below the hierarchy.
+
  --------------------------------------------------
 Abstract class and interface both are used to achieve abstraction where we can declare the abstract methods.
 Abstract class and interface both can't be instantiated.
@@ -44,11 +50,7 @@ multiple Java interfaces.	.
 
 
 Simply, abstract class achieves partial abstraction (0 to 100%) whereas interface achieves fully abstraction (100%).
--- Major Difference:
-From Java 8, the big difference between the Interface and the Abstract class is
-Using Interfaces, can impleemnt mutiple inheritance whereas Abstract class cannot be used.
-Highest level of Abstraction using Inerface.
-Interfaces are like standards where all its implementation classes are below the hierarchy.
+
 ---------------------------------------------------
 An interface in Java is a blueprint of a class.
 Interface fields(variables) are public, static and final by default, and the methods are public and abstract.
@@ -73,7 +75,7 @@ An Interface extends another interface
 A class implements 2 interfaces
 an interface extends 2 interfaces
 
-the ambiguity issue is resolved if we use intefaces to implement Multiple inheritance. Since the implementation is provided by the implementation class.
+the ambiguity issue is resolved if we use interfaces to implement Multiple inheritance. Since the implementation is provided by the implementation class.
 
 Note: since the methods in interface are public by default,
 the overriding methods must be public in order to avoid the access privilege issue.

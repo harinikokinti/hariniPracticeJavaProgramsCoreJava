@@ -29,7 +29,7 @@ public class Deadlock extends Thread {
                     try{ Thread.sleep(100);  }
                     catch (Exception e)  {  System.out.println(e);  }
                     synchronized (resource2) {
-                        System.out.println("Thread 1 locked  resource2");
+                        System.out.println("Thread 1 locked resource 1 and resource2");
                     }
                     }
                 }
@@ -43,7 +43,7 @@ public class Deadlock extends Thread {
                     try{ Thread.sleep(100);  }
                     catch (Exception e)  {  System.out.println(e);  }
                     synchronized (resource1) {
-                        System.out.println("Thread 2 locked  resource1");
+                        System.out.println("Thread 2 locked resource2 and  resource1");
                     }
                 }
 
@@ -71,7 +71,7 @@ class DeadlockSolved extends Thread {
                 synchronized (resource1) {
                     System.out.println("Thread 1 locked  resource1");
                     synchronized (resource2) {
-                        System.out.println("Thread 1 locked  resource2");
+                        System.out.println("Thread 1 locked  resource 1 and resource2");
                     }
                 }
             }
@@ -83,7 +83,7 @@ class DeadlockSolved extends Thread {
                 synchronized (resource2) {
                     System.out.println("Thread 2 locked  resource2");
                     synchronized (resource1) {
-                        System.out.println("Thread 2 locked  resource1");
+                        System.out.println("Thread 2 locked  resource2 and resource1");
                     }
                 }
 

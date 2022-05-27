@@ -1,4 +1,11 @@
 package com.harini.core.arrays;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /*
 Java array is an object which contains elements of a similar data type which has contiguos memory location.
 Java array is an index based with fixed size.
@@ -9,8 +16,9 @@ Single Dimensional Array
 Multidimensional Array
 
 --Advantages
-Code Optimization: It makes the code optimized, we can retrieve or sort the data efficiently.
-Random access: We can get any data located at an index position.
+1. Code Optimization: It makes the code optimized, we can retrieve or sort the data efficiently.
+2. Random access: We can get any data located at an index position.
+3.type safe : can save specific type of values
 
 --Disadvantages
 Size Limit: We can store only the fixed size of elements in the array.
@@ -53,6 +61,15 @@ In Java, an array is an object. For array object, a proxy class is created whose
     public static void arraycopy(
         Object src, int srcPos,Object dest, int destPos, int length
         )
+
+-- Anonymous Array
+Array reference that is not stored in a variable.
+
+Ex: new int[]{1,2,3,4};
+Ex:  sample.min(new int[]{10,22,30,8}); ;//passing anonymous array to method
+
+-- The binarySearch() method of the Arrays class is used to search a specific element in an array. The method uses the binary search algorithm.
+The array must be in natural ordering before making this call. It is the simplest and most efficient method to find an element in a sorted array.
  */
 // Single Dimensional Array
 public class ArrayExample {
@@ -77,7 +94,7 @@ public class ArrayExample {
 class Sample {
     void min(int a[]) {
         int min = a[0];
-        for(int i = 1; i<4 ; i++) {  //  Find the minimum of the array elements
+        for(int i = 1; i<4 ; i++) {  //  Find the minimum of the array elements using array index
             if(min > a[i]) {
                 min = a[i];
             }
@@ -142,7 +159,7 @@ class TestJaggedArray{
 //Java Program to get the class name of array in Java
 class Testarray4{
     public static void main(String args[]){
-//declaration and initialization of array
+//declaration, instantiation and initialization of array
         int arr[]={4,4,5};
 //getting the class name of Java array
         Class c=arr.getClass();
@@ -167,6 +184,17 @@ class TestArrayCopyDemo {
         System.arraycopy(copyFrom, 2, copyTo, 0, 7);
         //printing the destination array
         System.out.println(String.valueOf(copyTo));
+
+
+        int x[] = {10,30,12,16};
+        int y[] = new int[x.length];
+
+        y=x;
+
+        for(int i:y)
+        System.out.println(i);
+
+
     }
 }
 
@@ -186,6 +214,90 @@ class Testarray1{
 
         System.out.println("Are both equal?");
         System.out.println(arr==carr);
+
+    }
+}
+
+// Print array in reverse order
+
+class PrintArrayReverse {
+    public static void main(String args[]) {
+        int x[] = {10,20,30,40};
+
+        for(int i:x)
+            System.out.println(i);
+
+        for(int i=x.length-1; i>=0; i--)  //  print in reverse
+            System.out.println(x[i]);
+        }
+
+
+    }
+
+
+
+// Java Program to find Third Largest Number in an Array
+
+class ThirdLargestInArrayExample{
+    public static int getThirdLargest(int[] a, int total){
+        int temp;
+        for (int i = 0; i < total; i++)
+        {
+            for (int j = i + 1; j < total; j++)
+            {
+                if (a[i] > a[j])
+                {
+                    temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+        return a[total-3];
+    }
+    public static void main(String args[]){
+        int a[]={1,2,5,6,3,2};
+        int b[]={44,66,99,77,33,22,55};
+        System.out.println("Third Largest: "+getThirdLargest(a,6));
+        System.out.println("Third Largest: "+getThirdLargest(b,7));
+    }}
+
+// convert array to list
+
+class ArrayToList
+{
+    public static void main(String args[]){
+        Character charArray[] ;
+        charArray = new Character[]{'B', 'H', 'R', 'K', 'P'};
+
+        // using Arrays.asList()
+        List<Character> characterList = Arrays.asList(charArray);  // convert array to list
+
+        for(Character x : characterList) {
+            System.out.println(x);
+        }
+
+
+        // using Collections.addall()
+        List<Character> characterList2 = new ArrayList<>();
+        System.out.println("Convert array to list usign collections");
+        Collections.addAll(characterList2,charArray);  // convert array to list
+
+
+        /*
+        for(Character p: characterList2) {
+            System.out.println(p);
+        } */
+        characterList2.forEach(p->System.out.println(p));
+
+
+        // using streams
+        System.out.println("Convert array to list usign streams");
+        List<Character> newcharacterList = Arrays.stream(charArray).collect(Collectors.toList());
+        newcharacterList.forEach(p->System.out.println(p));
+
+
+        System.out.println(Arrays.binarySearch(charArray,'B'));
 
     }
 }

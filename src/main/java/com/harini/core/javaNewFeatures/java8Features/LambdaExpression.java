@@ -31,6 +31,43 @@ Note: Lambda expresssion is the implementation of the single method of functiona
 import java.util.*;
 import java.util.stream.Stream;
 
+// Program to understand Lambda Expression
+
+interface A {
+    void show();
+}
+/*
+class xyz implements A {
+    public void show() {
+        System.out.println("Hello");
+    }
+}  */
+
+class LambdaDemo {
+    public static void main(String args[]) {
+        A obj;
+        /*
+        obj = new A() {
+        public void show() {
+            System.out.println("hello");
+        }
+    };
+    */
+        obj = () -> System.out.println("hello");
+        obj.show();
+
+
+    }
+}
+/*
+Note: Here, instead of writing implementation class XYZ for the interface A, we first write anonymous class and implement the interface method show(),
+Secondly, we remove that anonymous class and write lambda expression to simplify the code.
+
+*/
+
+
+
+
 // With and Without Lambda Expression Example
 interface Drawable {
     void draw();

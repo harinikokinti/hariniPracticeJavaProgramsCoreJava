@@ -1,14 +1,16 @@
 package com.harini.core.polymorphism;
 /*
 --POLYMORPHISM - Many forms
-Tp perform a single action in different ways.
+To perform a single action in different ways.
 There are two types of polymorphism in Java: compile-time polymorphism and runtime polymorphism.
 We can perform polymorphism in java by method overloading and method overriding.
 
---  compile time polymorphism.:
+--  compile time polymorphism.: (method overloading)
 If you overload a static method in Java, it is the example of compile time polymorphism.
+method overloading is an example of compile time polymorphism.
+The method call is decided at compile time, by seeing its arguments
 
---Runtime Polymorphism
+--Runtime Polymorphism (method overriding)
 Runtime polymorphism or Dynamic Method Dispatch is a process in which a call to an overridden method is resolved or decided at runtime rather than at compile-time.
 In this process, an overridden method is called through the reference variable of a superclass.
 The determination of the method to be called during runtime is based on the object being referred to by the reference variable.

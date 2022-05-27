@@ -18,6 +18,9 @@ There are two ways to overload the method in java
 5. Throw different checked or unchecked exceptions.
 6. You can prevent a method from being overwritten by making it final, or static , but you cannot prevent a method from being overloaded.
 
+diff no of arguments
+diff order of dataypes
+not with diff return type , method overloading does not happen
  */
 
 //Method Overloading: changing data type of arguments
@@ -29,7 +32,7 @@ class Calculation
         System.out.println("Addition of int values:" + (x+y));
     }
     void add(int x,float y){
-       System.out.println("Addition of int and double values" + (x+y));
+       System.out.println("Addition of int and double values: " + (x+y));
     }
 }
 
@@ -45,23 +48,24 @@ public class MethodOverloading {
 
 class Calculation2
 {
-    int add(int x,int y)
+    void add(int x,int y)
     {
-       return 2;
-        // System.out.println("Addition of int values:" + (x+y));
+      // return 2;
+        System.out.println("Addition of int values: " + (x+y));
     }
 
-    double  add(int x,int y, double z){
-        return 3;
-        //System.out.println("Addition of int and double values" + (x+y+z));
+    void  add(int x,int y, double z){
+       // return 3;
+        System.out.println("Addition of int and double values:  " + (x+y+z));
     }
 }
 
  class MethodOverloadingWithNoOfAargument {
     public static void main(String args[]) {
         Calculation2 calculation2 = new Calculation2();
-        System.out.println(calculation2.add(2,3));
-        System.out.println(calculation2.add(2,4,3.2));
+        calculation2.add(2,3);
+        calculation2.add(2,4,3.2);
+
     }
 }
 
@@ -74,10 +78,10 @@ class Adder{
 }
 class TestOverloading3{
     public static void main(String[] args){
-        System.out.println(Adder.add(11,11));//ambiguity
+        System.out.println(Adder.addition(11,11));//ambiguity
     }}
+*/
 
- */
 
 
 
@@ -86,9 +90,15 @@ class TestOverloading3{
 // But JVM calls main() method which receives string array as arguments only. Let's see the simple example:
 
 class TestOverloading4{
-    public static void main(String[] args){System.out.println("main with String[]");}
+    public static void main(String[] args){
+        System.out.println("main with String[]");
+        TestOverloading4.main();
+
+    }
     public static void main(String args){System.out.println("main with String no array");}
     public static void main(){System.out.println("main without args");}
+
+
 }
 
 // Method Overloading and Type Promotion

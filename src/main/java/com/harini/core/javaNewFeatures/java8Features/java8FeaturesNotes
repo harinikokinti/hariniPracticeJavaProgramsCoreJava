@@ -1,7 +1,10 @@
+-- Java 8 Features
+
 Oracle released a new version of Java as Java 8 in March 18, 2014.
 It was a revolutionary release of the Java for software development platform. It includes various upgrades to the Java programming, JVM, Tools and libraries.
 
 Java 8 provides following features for Java Programming:
+
 
 Lambda expressions,
 Method references,
@@ -21,6 +24,88 @@ Type and Repeating Annotations,
 IO Enhancements,
 Concurrency Enhancements,
 JDBC Enhancements etc.
+Spliterator
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+-- Fundamentals of Functional Programming:
+    - Declarative Programming model
+    - Work on functions
+    - Immutable
+    - Pgms work by returning the values instead of modifying values
+    - Suitable for parallel programming(funcitons can run parallely without collision)
+    - Java is not pure funcitonal programming. It is both objecta nd funcitonal
+    - Uses Recursion for iteration
+    - Abstraction on both data and behaviour
+    - Features:
+        - First-class funcitons
+        - higer order funcitons
+        - Immutable data
+        - Pure functions
+        - Recursion
+        - manipulation of lists
+        - Lazy Evaluation
+
+
+-- Lambda Expression:
+A function that can be shared or referred to as an object.
+1. To provide the implementation of Functional interface(one abstract method interface).
+2. Less coding.
+
+Java lambda expression consists of three components.
+1) Argument-list: It can be empty or non-empty as well.
+2) Arrow-token: It is used to link arguments-list and body of expression.
+3) Body: It contains expressions and statements for lambda expression.
+
+No Parameter Syntax
+() -> {
+//Body of no parameter lambda
+}
+
+One Parameter Syntax
+(p1) -> {
+//Body of single parameter lambda
+}
+
+Two Parameter Syntax
+(p1,p2) -> {
+//Body of multiple parameter lambda
+}
+
+Note: Lambda expresssion is the implementation of the single method of functional interface
+
+
+-- Method Reference:
+    Uses function as a parameter to invoke a method.  (call by Method)  , pass a method as argument into another method
+   Method reference is used to refer method of functional interface.
+   A lambda expression is replaced with the method reference if it is used multiple times(more compact way).
+
+   --Types of Method References
+   1. Reference to a static method
+       Syntax: ContainingClass::staticMethodName
+   2. Reference to an instance method
+       Syntax: containingClassObject::instanceMethodName
+   3. Reference to a constructor -- can refer a constructor by using the new keyword.
+       Syntax: ClassName::new
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Predefined Functional Interfaces:

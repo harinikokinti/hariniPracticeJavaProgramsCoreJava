@@ -1,0 +1,178 @@
+-- Java String
+> String is basically an object that represent sequence of char value
+> An array of characters works same as java string
+
+char[] ch = { 'h', 'e', 'l', 'l', 'o' }
+String str = new String(ch);
+or
+String str = "Hello";
+In java.lang contain a class String which implements serilazable, comparable, charSequence interface
+
+-- CharSequence interface
+The CharSequence interface is a readable sequence of char values.
+String
+StringBuffer
+StringBuilder
+
+-- Strings are immutable
+The java string is immutable which means it cannot be changed, whenever we change any string a new instance is created
+For mutable Strings we can use StringBuffer and StringBuilder class
+
+# THere are two ways to create a string object
+1. by using String literal
+2. by new keyword
+
+1. string literal
+using double quotes we can create string
+String str = "Hello";
+Each time you create a string literal, the JVM check the string constant pool. if the string already exist in the pool
+a reference to the ppol instance is returned. if the string doesnot exist in the pool, new string instance is created and placed
+in the pool
+Note: why java uses the concept of String literal|?
+- to make java memory efficient (because no new object is created if it exist already in the string contant pool)
+
+2. by new keyword
+String str = new String("Hello")
+JVM will create a new string in normal heap memory and the literal hello will be placed in the string constant pool
+the variable str will refer to the object in the heap
+# String class provides various methods
+charAt()
+length()
+subString()
+contains()
+join()
+equals()
+isEmpty()
+concat()
+
+
+-- Immutable string in Java
+In java string object are immutable - means unchangable or unmodifiable
+once string object is created its data or state cannot be changed but we can create a new instance
+
+why string objects are immutable in java
+because java uses the concept of string literal
+suppose there are 10 reference variable all refer to one object "Hello"
+of one reference variable changes the value of the object it will affect to all reference variable
+that is why string object are immutable in java
+
+-- Compare string
+we can compare string in java on the basic of the content and reference
+there are 3 ways we can compare string in java
+1. using equal() method
+2. by using == operator
+3. compareTo() method
+
+1. by using equal() method
+the string class equals() method compares the original content of the string
+it compare value of string for equality
+boolean equal(other object) // compare the string to the other object
+boolean equalsIgnoreCase(other object)  // compare the string to the other string ignoring case
+
+2. by using == operator
+the == operator compares references not value
+
+3. using compareTo() method
+string class compareTo() method compares values and return an integer that describe if first string is less then equal to
+or greater then second string
+
+s1 and s2
+s1 == s2  // 0
+s1 > s2  // positive
+s1 < s2  // negative
+
+-- String concatenation
+in java concatenation means a new string that is the combination of multiple string
+there are 2 ways we can concat string in java
+1. using + opeartor
+2. using concat() method
+
+1. using + operator
+in java string concatenation is implemented through the stringBuilder / strigBuffer class and its append method
+string concatenation operator proces a new string by appending the second opearnt into the end of the first operand
+the string concatenation operator can concat only string but primitive value also
+
+2. using concat() method
+string concat method will concatenate the specific string to the end of current string
+public String concat(String other)
+
+-- Substring in java
+> A substring is a part of string
+> java provides a built in method subString() that etract a subString from the given string using index value passed
+as an argument
+Example:
+System.out.println("Original message: "+ message);
+        System.out.println("SubString starting from index 7: "+ message.substring(7));
+        System.out.println("SubString starting from index  0 to 7: "+ message.substring(0, 7));
+
+        String str = new String("Welcome home");
+        System.out.println(str);
+        System.out.println(str.substring(8));
+
+-- Split() method
+split() method of a string class can used to extract a substring from a phrase. it accept argument in the form of
+regular expression
+
+-- Java StringBuffer class
+In java stringBuyffer class is used to create mutable (changable) String object
+it is same as string excpt it is mutable that is it can be changed
+
+StringBuffer class constructor:
+StringBuffer() with initial capacity of 16
+StringBuffer(String s) - it create an object with specified string
+StringBuffer(int capacity) - it create an object with empty string buffer but we can specified capacity as length
+
+# StringBuffer method
+append()
+insert()
+replace()
+delete()
+reverese()
+capacity()
+charAt()
+length()
+
+
+# insert()
+# dleete()
+# replace()
+# reverse()
+# capacity()
+
+The default capacity of the buffer is 16. if the number of character increase from its current capacity. it increase the
+capacity
+(old capacity * 2) + 2
+default capacity = 16
+(16 * 2) + 2  = 34
+
+-- StringBuilder
+In java StringBuilder class is used to create a mutable String
+the java StringBuilder class is same as StringBuffer class except that it is not synchronized
+
+StringBuilder has almost all method same as StringBuffer
+appemd()
+# insert()
+# dleete()
+# replace()
+# reverse()
+# capacity()
+
+-- String vs StringBuffer
+String
+> it is immutable
+> String is slow and consum more memory when you concat too many string
+> string class override the equal() method of object class , can comare the content of two string by equals() method
+
+StringBuffer
+> it is mutable
+> it is fast and consume less memory when you concat string
+> it does not override the equals() method of the object class
+
+-- StringBuffer and StringBuilder
+StringBuffer
+> it is synchorinized ie thread safe
+> it is less efficient
+
+StringBuilder
+> it is non-synchorinized , that is it is  not thread safe
+> it is more efficient

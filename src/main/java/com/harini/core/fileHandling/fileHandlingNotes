@@ -1,0 +1,30 @@
+-- Stream
+A stream can be defined as a sequence of data. There are two kinds of Streams −
+1. Byte Stream
+Operates on Bytes(bits)
+FileOutputStream : to create a file and write data into it.
+FileInputStream : to read data from the file.
+2. Character Stream
+Operates on characters (16  bit unicode)
+FileWriter class : to write bytes to a file
+FileReader class : to read bytes from the file
+3. Buffered Stream
+Operates line by line
+BufferedInputStream or BufferedReader :  to read lines from the file
+BufferedOutputStream or PrintWriter :  to write lines to the file
+Note: Internally FileReader uses FileInputStream and FileWriter uses FileOutputStream but here the major difference
+is that FileReader reads two bytes at a time and FileWriter writes two bytes at a time.
+
+-- File Operations:
+Create File
+Get File Information
+Write to a file
+Read into a file
+Delete a file
+
+
+-- NIO Nonblocking I/O
+It takes the data in buffer and reads as junks ... for faster performance
+
+
+
