@@ -103,3 +103,83 @@ class TestAbstract {
     }
 
 }
+
+
+// why to use abstract class
+// example which defines a common funcitonality area()  method across all the sub classes
+
+abstract class Shape1{
+    public double width;
+    public double height;
+    public double radius;
+    public final float pie = 3.14f;
+
+    public abstract void getArea();
+}
+
+class Rectangle2 extends Shape1{
+    public Rectangle2(double width, double height){
+        this.width = width;
+        this.height = height;
+    }
+
+    public void draw(){
+        System.out.println("rectangle drawing...");
+    }
+
+    @Override
+    public void getArea() {
+        System.out.println("Area: "+ (width * height));
+    }
+}
+
+class Circle2 extends Shape1{
+    public Circle2(double radius){
+        this.radius = radius;
+    }
+    public void drawing(){
+        System.out.println("circle drawing...");
+    }
+
+    @Override
+    public void getArea() {
+        System.out.println("Area: "+ (this.pie * radius * radius));
+    }
+}
+
+ class Demo24 {
+    public static void main(String[] args) {
+        Rectangle2 rectangle = new Rectangle2(12.34, 56.78);
+        Circle2 circle = new Circle2(55.55);
+
+        rectangle.draw();
+        circle.drawing();
+
+        rectangle.getArea();
+        circle.getArea();
+    }
+}
+
+// Example 2   Why abstract class
+
+abstract class Car {
+    public void accelerate() {
+        System.out.println("Do something to accelerate");
+    }
+    public void applyBrakes() {
+        System.out.println("Do something to apply brakes");
+    }
+    public abstract void changeGears();
+}
+// Now, any Car that wants to be instantiated must implement the changeGears () method.
+
+class Alto extends Car {
+    public void changeGears() {
+        System.out.println("Implement changeGears() method for Alto Car");
+    }
+}
+class Santro extends Car {
+    public void changeGears() {
+        System.out.println("Implement changeGears() method for Santro Car");
+    }
+}

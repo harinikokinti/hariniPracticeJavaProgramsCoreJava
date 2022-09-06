@@ -28,23 +28,23 @@ public class Interthread {
 // Inter thread communiaation example using Banking transactions
 
 class Customer  {
-    int amount = 10000;
+    int balance = 10000;
 
     synchronized void withdraw(int amount) {
-        if (this.amount < amount) {
+        if (this.balance < amount) {
             try {
-                wait();
+                wait();  // the thread releases the lock and waits
             } catch (Exception e) {
                 System.out.println(e);
             }  // here if there is no enough amount to withdraw, the thread waits by releasing the lock on the object
         } else {
-            this.amount -= amount;
+            this.balance -= amount;
             System.out.println("Amount Withdraw Completed");
         }
     }
 
     synchronized void deposit(int amount) {
-        this.amount+= amount;
+        this.balance+= amount;
         System.out.println("Amount Deposit Completed");
         notify();   //  it wakes up any thread which is in waiting state
     }

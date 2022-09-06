@@ -7,13 +7,13 @@ import java.util.Objects;
 public class OverrideEqualsHashcode {
 }
 /*
--- Why to override equals() and hashcode()?  Not to allow duplicate objects inserted into the has based collections
+-- Why to override equals() and hashcode()?  Not to allow duplicate objects inserted into the hash based collections
 https://www.techiedelight.com/why-override-equals-and-hashcode-methods-java/#:~:text=Overriding%20only%20equals()%20method,on%20each%20of%20the%20two
 
-The hash based collecitons like HashSet, HashMap, HashTable are organized like a sequence of buckets,
+The hash based collections like HashSet, HashMap, HashTable are organized like a sequence of buckets,
 and the hash code value of an object is used
  1. to determine the bucket to store the object.
- 2. to search the object position during retrieval , along with hshcode, equals() also used to search
+ 2. to search the object position during retrieval , along with hashcode, equals() also used to search
 
 Note:
 1. equal objects must have equal hash codes but not vice versa.
@@ -41,26 +41,26 @@ class Student {
         this.studentName  = studentName;
     }
 // Override equals() method to compare the object memebers' values
-  public  boolean equals(Object obj) {
-
-      if(! (obj instanceof Student))  // check if the obj s is an instance of Student
-          return false;
-
-      Student s =  (Student)obj;  // cast the obj to the Student object
-
-      if(this.studentID != s.studentID)
-          return false;
-      if(! this.studentName.equals(s.studentName)) //  here equals() is String class method
-          return false;
-
-        return true;  // if both the above conditions are not false, then returns true
-
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(studentID, studentName);
-    }
+//  public  boolean equals(Object obj) {
+//
+//      if(! (obj instanceof Student))  // check if the obj s is an instance of Student
+//          return false;
+//
+//      Student s =  (Student)obj;  // cast the obj to the Student object
+//
+//      if(this.studentID != s.studentID)
+//          return false;
+//      if(! this.studentName.equals(s.studentName)) //  here equals() is String class method
+//          return false;
+//
+//        return true;  // if both the above conditions are not false, then returns true
+//
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(studentID, studentName);
+//    }
 }
 
 

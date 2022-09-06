@@ -1,14 +1,14 @@
 package com.harini.core.serialization;
 /*
 
-Serialization is the process of converting an object into a stream of bytes to store or save the object or transmit it to memory, a database, or a file.
+-- Serialization is the process of converting an object into a stream of bytes to store or save the object or transmit it to memory, a database, or a file.
 Its main purpose is to save or store the state(value) of an object in order to be able to recreate it when needed.
 The reverse process is called deserialization
 
  Note: By default, its not possible to store object. Its possible only if the class implements Serializable interface
 
--- transient keyword is used to deserialise the variable .
-When an object is deserialized the transient variables retains the default value depending on the type of variable declared and hence lost its original value.
+-- transient keyword is used to deserialize the variable .
+When an object is deserialized the transient variables retains the default value depending on the type of variable declared and hence will not lose its original value.
 
 -- Volatile keyword is used to modify the value of a variable by different threads
 Every thread has its own private memory where it stores a copy of the variable.

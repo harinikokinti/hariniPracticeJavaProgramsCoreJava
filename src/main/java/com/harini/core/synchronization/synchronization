@@ -1,4 +1,5 @@
 -- Synchronization
+All operations should happen in Atomic way, Visible, Ordered
 The capability to control the access of multiple threads to any shared resource.
 To allow only one thread to access the shared resource.
 
@@ -21,6 +22,7 @@ Thread Synchronization
 -- Synchronized Method
    If you declare any method as synchronized, it is known as synchronized method.
    Synchronized method is used to lock an object for any shared resource.
+   At a time only 1 thread is allowed to access synchronized method
 ------------------------------------------
 -- Synchronized block
    It can be used to perform synchronization on any specific resource of the method.
@@ -57,7 +59,12 @@ static void printTable(int n) {
 
 -----------------------------------
 -- Deadlock:
-When a thread is waiting for an object lock, that is locked by another thread,  which inturn is waiting for the lock acquired by 1st thread.
+if 2 threads (t1,t2), resources r1, r2 , t1 trying r1(acaquired lock by t2) and t2 trying r2( acquired lock by t1),
+cyclic dependency happens, this is deadlock
+
+-- Thread contention
+Multiple threads trying to access a locked resource
+
 More Complicated Deadlocks
 A deadlock may also include more than two threads
 Thread 1 locks A, waits for B
@@ -65,12 +72,14 @@ Thread 2 locks B, waits for C
 Thread 3 locks C, waits for D
 Thread 4 locks D, waits for A
 Thread 1 waits for thread 2, thread 2 waits for thread 3, thread 3 waits for thread 4, and thread 4 waits for thread 1.
----------------------------------
+
+----------------------------------------------
+
 -- Inter-thread communication  or Co-operation  is all about allowing synchronized threads to communicate with each other.
 Cooperation (Inter-thread communication) is a mechanism in which a thread is paused running in its critical section
 and another thread is allowed to enter (or lock) in the same critical section to be executed.
 It is implemented by following methods of Object class:
-    1. wait()   :  It releases the current thread and waits until it gets notified (by invoking notify() or notifyall() methods)
+    1. wait()   :  It invokes the object. It releases the current thread and waits until it gets notified (by invoking notify() or notifyall() methods)
                     by any other thread in  for the same object
                     Note: The current thread must own this object's monitor, so it must be called from the synchronized method only otherwise
                           it will throw exception.

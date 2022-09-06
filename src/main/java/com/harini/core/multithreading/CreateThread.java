@@ -17,12 +17,14 @@ package com.harini.core.multithreading;
         The thread moves from New state to the Runnable state.
         When the thread gets a chance to execute, its target run() method will run.
 
+       Note: run() method must be defined in the class which extends Thread class
+
     2. Implementing Runnable Interface:
     The Runnable interface should be implemented by any class whose instances are intended to be executed by a thread.
     Runnable interface have only one method named run().
     public void run(): is used to perform action for a thread.
 
-    Note: The Runnable inerface is used to create Thread in senarios like below
+    Note: The Runnable interface is used to create Thread in scenarios like below
 
     class A{ }
     class Mythread extends A, Thread {  // throws error because java doesn't support multiple inheritance
@@ -38,6 +40,7 @@ public class CreateThread  extends Thread {
         System.out.println("Thread is running");
     }
 }
+
     class Test {
     public static void main(String args[]) {
         CreateThread createThread = new CreateThread();  // created  a thread

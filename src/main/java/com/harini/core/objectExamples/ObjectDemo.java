@@ -21,11 +21,19 @@ The object is an entity which has state and behavior.
 The object is an instance of a class.
 object gets the memory in heap memory area.
 
- There are 3 ways to initialize object in Java. Initializing an object means storing data into the object.
-
+There are 3 ways to initialize object in Java. Initializing an object means storing data into the object.
 By reference variable
 By method
 By constructors
+
+Example:
+Student student = new Student("RAM", 101,"CSE"); //Creating object & Object initialization through constructor
+Branch branch = new Branch();
+branch.branchName = "CSE";  // // Object Initialization through reference variable
+branch.branchID = 1;
+student.setStudentLastName("XYZ"); // Object initialization through method
+new Branch().printGreetings(); //calling method with anonymous object
+Labs lab1 = new Labs(), lab2 = new Labs(); // creating multiple objects
 
 There are many ways to create an object in java. They are:
 
@@ -38,6 +46,45 @@ By factory method etc.
 --- Anonymous object
 Anonymous simply means nameless. An object which has no reference is known as an anonymous object. It can be used at the time of object creation only.
 If you have to use an object only once, an anonymous object is a good approach.
+new Branch().printGreetings(); //calling method with anonymous object
+
+The objects can be created without new keyword by following ways
+Using Class.forName() and Class.newInstance()
+ClassLoader loadClass()
+Using Object.clone()
+Deserialization
+Using reflection
+
+
+-- Create object using Class.newInstance()
+Class ref = Class.forName("DemoClass");
+DemoClass obj = (DemoClass) ref.newInstance();
+Class.forName() loads the class in memory. To create an instance of this class, we need to use newInstance().
+
+-- Create object using class loader’s loadClass()
+Just like above method, class loader’s loadClass() method does the same thing. It creates a new instance of class using an existing instance of same class.
+
+instance.getClass().getClassLoader().loadClass("NewClass").newInstance();
+
+--Create object using Object.clone()
+This is also a way to have a new independent instance of a class.
+NewClass obj = new NewClass();
+NewClass obj2 = (NewClass) obj.clone();
+
+-- Create new object using serialization and deserialization
+If you have gone through this article, you can understand that serialization and de-serialization is also a way to have another instance of a class in system.
+
+ObjectInputStream objStream = new ObjectInputStream(inputStream);
+ NewClass obj = (NewClass ) inStream.readObject();
+
+-- Create new object using reflection  [refer reflectionAPI package)
+Reflection is also a popular way to create new instances in most of available frameworks.
+constructor.newInstance(); or
+class.newInstance();
+
+
+
+
 
  */
 

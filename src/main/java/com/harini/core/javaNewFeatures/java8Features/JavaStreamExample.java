@@ -1,4 +1,5 @@
 package com.harini.core.javaNewFeatures.java8Features;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
@@ -13,6 +14,14 @@ Streams can be used to iterate any number of times
 Stream provides predefined methods to deal with the logic you implement.
 
 Note: Streams don't change the original data structure, they only provide the result as per the pipelined methods.
+
+filter
+map  -- ( to convert amd extract any required field ) , always write lambda inside map()
+mapToDouble().summaryStatistics --  to get summarised statistics
+distinct
+sorted
+collect(Collectors.toList(), .joining(), .grouping()  )
+
  */
 
 // Stream Iterating Example
@@ -126,8 +135,22 @@ public class JavaStreamExample {
         System.out.println(totalCount);
         // sum of all the products price
         System.out.println("Sum of all products price");
-        Double sumOfAllProducts =  list.stream().collect(Collectors.summingDouble(p-> p.price)); // Sum by using Collectors Methods
+       Double sumOfAllProducts =  list.stream().collect(Collectors.summingDouble(p-> p.price)); // Sum by using Collectors Methods
+       // Double sumOfAllProducts = list.stream().mapToDouble(p->p.price).sum(); // Sum  using mapToInt
         System.out.println(sumOfAllProducts);
+        // Average calculation
+
+
+        // Summary Statistics
+        DoubleSummaryStatistics summary = list.stream().mapToDouble(n->n.price).summaryStatistics();
+        System.out.println("Max Price: " + summary.getMax());
+        System.out.println("Min: " + summary.getMin());
+        System.out.println("Count: " + summary.getCount());
+        System.out.println("Sum: " + summary.getSum());
+        System.out.println("Avaerage: " + summary.getAverage());
+
+
+
         // Max and Min Product Price
         System.out.println("Max and Min Product Price");
         Product minPrice = list.stream().min((p1,p2) -> p1.price>p2.price ? 1 : -1).get(); //  min() is a terminal operation which combines stream elements and returns a summary result.
@@ -163,7 +186,14 @@ class ReduceMethod{
         list.add(new Product(4, "BluetoothDevice", 5000f));
         // This is more compact approach for filtering data
         Float totalPrice = list.stream().map(p -> p.price)
-                .reduce(0.0f, (sum, price) -> sum + price); //  accumulating price
+                .reduce(0.0f, (sum, price) -> sum + price); //  sum calculation using reduce
+        // 0
+        // 0 + 30000
+        // 30000 + 20000 = 50000
+        // 50000 + 10000 = 60000
+
+      // list.stream().map(p -> p.price).reduce(0.0f, Float::sum);  //  sum calculation using reduce 2nd way
+
         System.out.println(totalPrice);
         // More precise code
         Float totalPrice2 = list.stream().map(p -> p.price)
@@ -342,7 +372,6 @@ class StreamEx {
 
 //  Practice Examples of Streams  2
 
-
 class StreamExample2 {
     public static void main(String args[]) {
         List<String> stringList = Arrays.asList("Ram","Seetha","","Lakshman");
@@ -359,7 +388,17 @@ class StreamExample2 {
                 .collect(Collectors.joining(","));
         System.out.println(string);
 
+        // Convert String to Uppercase and join them using coma
+        List<String> strings = Arrays.asList("USA", "Japan", "France", "Germany", "Italy", "U.K.","Canada");
 
+       String newString =  strings.stream()
+                .map(p->p.toUpperCase())
+                .collect(Collectors.joining(","));
 
+        System.out.println("The newString with commas : " + newString);
     }
 }
+
+//  Practice Examples of Streams  3
+
+

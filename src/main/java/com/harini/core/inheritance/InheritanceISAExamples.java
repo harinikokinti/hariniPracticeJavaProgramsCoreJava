@@ -15,10 +15,11 @@ Sub class/child class/Derived class/Extended class
 
 -- TYPES
 There can be three types of inheritance in java:
-Single
-Multilevel
-Hierarchical
+Single: parent, child
+Multilevel: GrandParents, Parents, child
+Hierarchical: Parent, child1, child2
 In java programming, multiple and hybrid inheritance is supported through interface only not with class
+It can be achieved using interfaces
 
 --QUESTION
 Why multiple inheritance is not supported in java?

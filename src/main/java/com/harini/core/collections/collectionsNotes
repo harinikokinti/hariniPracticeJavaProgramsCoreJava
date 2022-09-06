@@ -1,33 +1,82 @@
 COLLECTION FRAMEWORK
 -------------------
+Collections
+	- An object that groups multiple elements into a single unit. Collections are used to store, retrieve, manipulate, and communicate aggregate data.
+	- A collections framework is a unified architecture for representing and manipulating collections
 
+	[Collection Framework]
+	- Interfaces - Collection, Set, List, Queue, Deque, Map
+	- Implementations - ArrayList, LinkedList, HashSet, TreeSet, LinkedHashSet, ArrayDeque, HashMap, TreeMap, LinkedHashMap
+	- Algorithms - Sorting, Shuffling, Searching, Data Manipulation, Composition, Min/Max
 
+	[Benefits]
+	- Reduces Programming Effort
+	- Increases Program Speed and Quality
+	- Allows interoperability among unrelated APIs
+	- Reduces effort to learn and to use new APIs
+	- Reduces effort to design new APIs
+	- Fosters software reuse
 
+	Arrays
+		- Fixed size
+		- Sequential memory allocation
 
+	Vector
+		- Dynamic Array
+		- Synchronized. Thread Safe
 
+	Hashtable
+		- Key Value store (Objects)
+		- Synchronized. Thread Safe
 
+	Properties
+		- Key Value store (String)
 
+	List - indexed and ordered
+		- Vector
+		- ArrayList
+		- LinkedList
 
+	Set - maintains unique values and sorted
+		- TreeSet
+		- HashSet
+		- LinkedHashSet
 
+	Map - key value store
+		- TreeMap
+		- HashMap
+		- LinkedHashMap
 
-    - Set -Does not allow duplicates, sorted, no imdex
-        - HashsSet - faster search, works based on hashing techni
-        - TreeSet -
-            - Comparable
-                - compareTo(Object obj)
-            - Comparator
-                - compare(Object obj1, Object obj2
-        - LinkedHashSet - ordered, maintains insertion order, follows Hashing technique
-    - Queue - FIFO
-        - Deque - doubly queue, operation on both sides
-            - PriorityQueue
-            - BlockingQueue
+	Queue - FIFO
+		- PriorityQueue
+		- Deque
 
-    - Map - maintains data as key, value pair
-        - HashTable - synchronised,
-        - HashMap - faster search with key(any type primitive or object)
-        - TreeMap   -
-        - LinkedHashMap
+Collections Framework Hierachy
+
+	- Iterable
+		- Collection
+			- List - dynamic sizing, ordered, index based, supports
+				- Vector - synchronized
+				- ArrayList - faster frequent reads, random access
+				- LinkedList - frequent insertions and updations
+			- Set - does not allows duplicates, sorted, no index
+				- HashSet - faster search, works based on hashing techinque, not ordered/sorted, allows null values
+				- TreeSet - sorting, not allows null values
+					- Comparable
+						- compareTo(object ob)
+					- Comparator
+						- compare(Object ob1, Objec ob2)
+				- LinkedHashSet - ordered, maintains insertion order, follows Hashing technique
+			- Queue - FIFO
+				-Deque - doubly queue, operation on both sides
+					- PriorityQueue
+					- BlockingQueue
+
+	- Map - maintains data as key, value pair, not allows duplicate keys
+		- Hashtable -  not allows null keys, values, synchronized
+		- HashMap	- allows null keys and values , faster search with key(any type primitive or object)
+		- TreeMap	- not allows null keys and allows null values
+		- LinkedHashMap -  allows null keys and values
 
         - Map.Entry
         - key
@@ -37,19 +86,12 @@ COLLECTION FRAMEWORK
     - ListIterator - goes forward and backward
     - forEach
 
-
     - Arrays.asList(empArr)  -- convert array to a list
     - empList.toArray()   -- convert list to array
     - empSet.toArray()  -- convert set to array
     - convert array to set
             1st convert array to list and then convert to set
             Set set = new HashSet(Arrays.asList(empArr));
-
-
-
-
-
-
 
 
 

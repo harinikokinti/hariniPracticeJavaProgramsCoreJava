@@ -19,7 +19,7 @@ Multithreading
             - call() returns a value after execution
             - create ExecutorService instance with threadPool (fixed, caches, single)
                 ExecutorService exs = Executors.newFixedThreadPool(5);
-            - submit the instance of the class implementing callable interface
+            - submit the instance of the class implementing callable interface or runnable interface, create future task
                 Future<String> f1 = exs.submit(c1);
             - returns reference of Future object to refer the thread submitted
             - get the value returned by thread from future
@@ -34,7 +34,7 @@ Multithreading
         - join (waits until it dies)
         - yield (gives  slot for other thread and goes back to runnable, )
 
-    - Thread Syncronization
+    - Thread Synchronization
         - all operations should happen in Atomic way, Visible, Ordered
         - at a time only 1 thread is allowed to access a synchronised method or block
         - Synchronised block  (mostly preferred, since it will not lock the entire method for long time)
@@ -52,14 +52,11 @@ Multithreading
             - ConcurrentSkipListMap
 
     - Thread contention
-        Muktiple threads trying to access a locked resource
+        Multiple threads trying to access a locked resource
 
     - Deadlock:
         if 2 threads (t1,t2), resources r1, r2 , t1 trying r1(acaquired lock by t2) and t2 trying r2( acquired lock by t1),
         cyclic dependency happens, this is deadlock
-
-
-
 
 
 Multitasking is a process of executing multiple tasks simultaneously. We use multitasking to utilize the CPU. Multitasking can be achieved in two ways:
@@ -90,6 +87,8 @@ Multitasking is a process of executing multiple tasks simultaneously. We use mul
 New  :  the thread is in new state if an instance is created for the thread class but before the invocation of start() method
 Runnable : Once the start() method is invoked, but hread scheduler has not selected it
 Running : the thread scheduler has selected it
+sleep:
+wait:
 Non-Runnable (Blocked) :  not eligible to run , but still alive
 Terminated : dead state when its run() method exits.
 
@@ -99,21 +98,76 @@ Terminated : dead state when its run() method exits.
    2. By implementing Runnable interface.
    3. Implements Callable
 
-    1. Java Thread class
-      Java provides Thread class to achieve thread programming. Thread class provides constructors
-      and methods to create and perform operations on a thread. Thread class extends Object class
-      and implements Runnable interface.
-      --Java Thread Methods  : start(), run(), sleep(), currentThread(), join(), destroy()  etc
-      --Starting a thread:
-      start() method of Thread class is used to start a newly created thread. It performs following tasks:
-        A new thread starts(with new callstack).
-        The thread moves from New state to the Runnable state.
-        When the thread gets a chance to execute, its target run() method will run.
+    1. Extending Thread class
+          Java provides Thread class to achieve thread programming. Thread class provides constructors
+          and methods to create and perform operations on a thread. Thread class extends Object class
+          and implements Runnable interface.
+          --Java Thread Methods  : start(), run(), sleep(), currentThread(), join(), destroy()  etc
+          --Starting a thread:
+          start() method of Thread class is used to start a newly created thread. It performs following tasks:
+            A new thread starts(with new callstack).
+            The thread moves from New state to the Runnable state.
+            When the thread gets a chance to execute, its target run() method will run.
 
-    2. Runnable Interface:
-    The Runnable interface should be implemented by any class whose instances are intended to be executed by a thread.
-    Runnable interface have only one method named run().
-    public void run(): is used to perform action for a thread.
+           Note: run() method must be defined in the class which extends Thread class
+
+    2. Implementing Runnable Interface:
+        The Runnable interface should be implemented by any class whose instances are intended to be executed by a thread.
+        Runnable interface have only one method named run().
+        public void run(): is used to perform action for a thread.
+
+        Note: The Runnable interface is used to create Thread in scenarios like below
+
+        class A{ }
+        class Mythread extends A, Thread {  // throws error because java doesn't support multiple inheritance
+        }
+
+        Hence this issue can be handled using interface Runnable
+        class Mythread extends A, implements Runnable (its a functional interface)
+
+    3. Implements Callable
+
+    -- Callable interface
+    To return an object after completing its execution
+    It has call()  method like run() method in Runnable
+    Using Executors class, can create a thread pool and create Future tasks and submit the tasks to the threads which
+    implement Callable interface
+
+    -- Executor Framework
+    Executor, ExecutorService, Executors are part of Java's Executor Framework
+    Since the creation and management of Threads are expensive and the operating system also imposes restrictions
+    on how many Threads an application can spawn, it's a good idea is to use a pool of threads to execute tasks in parallel,
+    instead of creating a new thread every time a request comes in. This not only improves the response time of the application
+    but also prevent resource exhaustion errors like "java.lang.OutOfMemoryError: unable to create new native thread".
+
+    Read more: https://javarevisited.blogspot.com/2017/02/difference-between-executor-executorservice-and-executors-in-java.html#ixzz7Y2aLet1d
+
+    -- Executor - It is a core interface used to execute the submitted Runnable tasks.
+                  An Executor is normally used instead of explicitly creating threads.
+                  It has only execute() method.
+    -- ExecutorService - It is an extension to Executor interface which provides a facility for returning a Future object and terminate,
+                 or shut down the thread pool, and the ability to wait for and look at the status of jobs.
+                 Once the shutdown is called, the thread pool will not accept new tasks but complete any pending task.
+                 It also provides a submit() method which extends Executor.execute() method and returns a Future.
+                 Future<T> submit(Callable<T> task);
+                 Future<?> submit(Runnable task);
+                 The Future object provides the facility of asynchronous execution, which means you don't need to wait until the execution
+                 finishes, you can just submit the task and go around, come back and check if the Future object has the result,
+                 if the execution is completed then it would have a result which you can access by using the Future.get() method.
+                 Just remember that this method is a blocking method i.e. it will wait until execution finish and the result is available
+                 if it's not finished already.
+
+    -- Executors - It is a utility class similar to Collections , which provides factory methods
+                   to create diff types of thread pools(ex:fixed and cached thread pools)
+
+
+    Ex: ExecutorService exs = Executors.newFixedThreadPool(5); // creates 5 threads
+    Future<String> f1 = exs.submit(c1); // it can accept both Callable/Runnable tasks
+    System.out.println(f1.get());
+
+    Advantage: Using thread pool, the threads can be reused once they finish their task.
+
+--------------------------------------------------------------------------------------------------------------------------------
 
 -- Thread Scheduler in Java
     Thread scheduler in java is the part of the JVM that decides which thread should run.
@@ -180,6 +234,7 @@ Better performance It saves time because there is no need to create new thread.
 
 Real time usage
 It is used in Servlet and JSP where container creates a thread pool to process the request.
+It is also used in Executor framework in Multithreading
 
 -- Thread Group
 A ThreadGroup represents a set of threads.
@@ -213,6 +268,8 @@ If you have to perform multiple tasks by multiple threads,have multiple run() me
 In java, garbage means unreferenced objects.
 Garbage Collection is process of reclaiming the runtime unused memory automatically.
 To do so, we were using free() function in C language and delete() in C++. But, in java it is performed automatically. So, java provides better memory management.
+gc() method - invoked by Garbage collector(Daemon thread), found in System and Runtime classes, cleans up the objects which are created using new keyword
+finalize() method - invoked each time before the object is garbage collected, found in Object class, cleans up the objects which are not created using new keyword
 
 Advantage of Garbage Collection
 It makes java memory efficient because garbage collector removes the unreferenced objects from heap memory.
@@ -233,19 +290,9 @@ e1=e2;//now the first object referred by e1 is available for garbage collection
 3) By anonymous object:
 new Employee();
 
-finalize() method
-The finalize() method is invoked each time before the object is garbage collected. This method can be used to perform cleanup processing. This method is defined in Object class as:
-
-protected void finalize(){}
-Note: The Garbage collector of JVM collects only those objects that are created by new keyword. So if you have created any object without new, you can use finalize method to perform cleanup processing (destroying remaining objects).
-gc() method
-The gc() method is used to invoke the garbage collector to perform cleanup processing. The gc() is found in System and Runtime classes.
-
-public static void gc(){}
-Note: Garbage collection is performed by a daemon thread called Garbage Collector(GC). This thread calls the finalize() method before object is garbage collected.
-
 -- Runtime class  : to interact with java runtime environment
-Java Runtime class provides methods to execute a process, invoke GC, get total and free memory etc. There is only one instance of java.lang.Runtime class is available for one java application.
+Java Runtime class provides methods to execute a process, invoke GC, get total and free memory etc.
+There is only one instance of java.lang.Runtime class is available for one java application.
 The Runtime.getRuntime() method returns the singleton instance of Runtime class.
 Methods:
 static Runtime getRuntime()

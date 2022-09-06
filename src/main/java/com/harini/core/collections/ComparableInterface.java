@@ -136,9 +136,7 @@ class TestComparableInterface {
         for(EmployeeNew e : employeeSet) {
             System.out.println(e.id + " " + e.name + " " + e.salary);
         }
-
     }
-
 }
 
 

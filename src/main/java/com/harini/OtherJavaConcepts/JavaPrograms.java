@@ -122,7 +122,7 @@ class ArrayAverage {
             sum = sum + i;
         }
 
-        double average = sum/(arr.length) ;
+        double average = sum / (arr.length);
         System.out.println("The average of an array is : " + average);
 
     }
@@ -131,10 +131,10 @@ class ArrayAverage {
 // Q. Write a Java program to test if an array contains a specific value
 class ArraySearch {
     public static void main(String[] args) {
-        double arr[] = {5,6,2,9,7};
+        double arr[] = {5, 6, 2, 9, 7};
         System.out.println(Arrays.stream(arr).count());  //  to get total count
         System.out.println(Arrays.stream(arr).average());  // to get average
-        Arrays.stream(arr).sorted().forEach(p-> System.out.println(p)); // print sorted output
+        Arrays.stream(arr).sorted().forEach(p -> System.out.println(p)); // print sorted output
 
         int key = 9;
         /*
@@ -147,8 +147,30 @@ class ArraySearch {
         */
 
 
-       // Arrays.stream(arr).filter();
+        // Arrays.stream(arr).filter();
 
 
     }
+}
+
+// Truncate Double value
+
+class TruncateDoubleValue {
+    public static void main(String[] args) {
+
+        double value = 1212.12131131;
+        System.out.println(value);
+
+//        value = value * Math.pow(10, 2);
+//        value = Math.floor(value);
+//        value = value / Math.pow(10, 2);
+
+        double value2 =Math.floor(value * Math.pow(10, 2)) / Math.pow(10, 2);
+
+        System.out.println(value2);
+
+
+
+    }
+
 }

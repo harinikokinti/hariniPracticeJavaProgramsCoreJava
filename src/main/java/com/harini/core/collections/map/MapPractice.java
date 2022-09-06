@@ -39,6 +39,7 @@ public class MapPractice {
         System.out.println("Using Streams");
         map.entrySet().stream().forEach(p->System.out.println(p.getKey()  + " " + p.getValue().empID + " " + p.getValue().empName));
 
+        // Map.entry(Key,Value) , it creates Map.Entry object
 
         // forEach(System.out::println);
 

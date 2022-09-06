@@ -127,6 +127,7 @@ class TestMultipleInheritance2 {
 
 // Java 8 Default Method in Interface , Java 8 Static Method in Interface
 interface Sam1 {
+    String interfaceVariable = "Hello"; // by default it is final, static, public
     void display();
     default void showDefault() {
         System.out.println("show DEFAULT method body");
@@ -152,5 +153,7 @@ class TestJava8DefaultAndStaticMethods {
         getData3.display();
         getData3.showDefault(); // if this is overriden , it returns overriden logic, if not it returns private method implementation also
         Sam1.showStatic();
+        // Sam1.interfaceVariable = "Hello Welcome";  // cannot modify
+        System.out.println(Sam1.interfaceVariable); // just can access the interface variable
     }
 }

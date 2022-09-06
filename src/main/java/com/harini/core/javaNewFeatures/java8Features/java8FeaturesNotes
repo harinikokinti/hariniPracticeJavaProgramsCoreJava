@@ -25,6 +25,7 @@ IO Enhancements,
 Concurrency Enhancements,
 JDBC Enhancements etc.
 Spliterator
+Date/Time API
 --------------------------------------------------------------------------------------------------------------------------------------------
 
 -- Fundamentals of Functional Programming:
@@ -87,28 +88,21 @@ Note: Lambda expresssion is the implementation of the single method of functiona
    3. Reference to a constructor -- can refer a constructor by using the new keyword.
        Syntax: ClassName::new
 
+-- Streams
+Java provides a new additional package in Java 8 called java.util.stream.
+This package consists of classes, interfaces and enum which allows functional-style operations on the elements.
+Streams can be used to filter, collect, print, and convert from one data structure to other.
+Streams can be used to iterate any number of times
+Stream provides predefined methods to deal with the logic you implement.
+
+Note: Streams don't change the original data structure, they only provide the result as per the pipelined methods.
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Predefined Functional Interfaces:
+-- Predefined Functional Interfaces:
 
 INTERFACE	                                DESCRIPTION
 BiConsumer<T,U>	It represents an operation that accepts two input arguments and returns no result.

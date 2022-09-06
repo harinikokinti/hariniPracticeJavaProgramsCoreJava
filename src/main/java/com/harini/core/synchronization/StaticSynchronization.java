@@ -38,7 +38,7 @@ class Table2{
  class TestSynchronization5 {
     public static void main(String[] args) {
 
-          Thread t1=new Thread(){
+        Thread t1=new Thread(){
             public void run(){
                 Table2.printTable(1);
             }
@@ -68,6 +68,42 @@ class Table2{
 
     }
 }
+
+
+//class TestSynchronizationWithoutStatic {
+//    public static void main(String[] args) {
+//        Table2 table = new Table2();
+//
+//        Thread t1=new Thread(){
+//            public void run(){
+//                table.printTable(1);
+//            }
+//        };
+//
+//        Thread t2=new Thread(){
+//            public void run(){
+//                table.printTable(10);
+//            }
+//        };
+//
+//        Thread t3=new Thread(){
+//            public void run(){
+//                table.printTable(100);
+//            }
+//        };
+//
+//        Thread t4=new Thread(){
+//            public void run(){
+//                table.printTable(1000);
+//            }
+//        };
+//        t1.start();
+//        t2.start();
+//        t3.start();
+//        t4.start();
+//
+//    }
+//}
 
 // Example of static synchronization by Using the anonymous class
 

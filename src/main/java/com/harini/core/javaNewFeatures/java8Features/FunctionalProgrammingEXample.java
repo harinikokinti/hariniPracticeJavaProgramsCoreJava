@@ -12,7 +12,10 @@ manipulation of lists
 Lazy Evalution
  */
 
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.function.*;
+import java.util.stream.Collectors;
 
 // Without Funcitonal Programming
 class Calculator {
@@ -153,12 +156,15 @@ class FunctionalInterfaceDemo {
         bicon.accept("I am BiConsumer Fun Interface"," with 2 arguments ");
 
         // Supplier -> no arguments and return value
-        Supplier<String> sup = () -> "I am Supplier Fun Interface";
+        Supplier<String> sup = () -> "I am Supplier Fun Interface";  // it returns value, so no need to write sout
+        Supplier<Integer> supInt = () -> 1234;
         System.out.println(sup.get());
+        System.out.println(supInt.get());
 
         // Predicate -> taken 1 argument and return value
         Predicate<Integer> pred = (age) -> age > 20;
         System.out.println("I am Predicate fun interface: " + pred.test(30));
+
 
     }
 }

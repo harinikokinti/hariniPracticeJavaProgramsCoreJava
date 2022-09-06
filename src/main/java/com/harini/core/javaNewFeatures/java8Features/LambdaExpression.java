@@ -56,7 +56,6 @@ class LambdaDemo {
         obj = () -> System.out.println("hello");
         obj.show();
 
-
     }
 }
 /*
